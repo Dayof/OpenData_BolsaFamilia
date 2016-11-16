@@ -71,5 +71,5 @@ Projeto final da matéria de Banco de Dados, professora Maristela.
 Universidade de Brasília (UnB), 2016/2.
 
 ### Autoria
-Dayanne Fernandes da Cunha - 13/0107191
+Dayanne Fernandes da Cunha - 13/0107191 <br>
 Christian Costa Werner - 14/0134573
