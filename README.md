@@ -70,7 +70,7 @@ $ sqlite3 bf.db 'select * from BOLSA_FAMILIA'
 $ sqlite3 bf.db 'select * from FUNCAO_SUBFUNCAO'
 ```
 
-### Importar Tabelas 3F
+### Tabelas 3F
 
 Na pasta [MR](MR) temos o diagrama, modelo e script SQL das tabelas normalizadas na forma 3F geradas a partir do MySQL Workbench, para verificar o esquema das tabelas é só utilizar o SQLite3 executando os seguintes comandos:
 
@@ -78,6 +78,12 @@ Na pasta [MR](MR) temos o diagrama, modelo e script SQL das tabelas normalizadas
 $ cd MR
 $ sqlite3
 $ sqlite> .read EER.sql
+```
+
+Para inserir os dados abertos nas tabelas normalizadas em 3F é só executar o script SQL [normalize.sql](normalize.sql):
+
+``` bash
+$ sqlite3 bf.db < normalize.sql
 ```
 
 ### Relatório
