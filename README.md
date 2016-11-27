@@ -7,6 +7,7 @@ Projeto que coleta dados abertos sobre o bolsa família e realiza CRUD e algumas
 
 - Python 3
 - SQLite3
+- MySQL Workbench
 
 ### Features:
 - Importar dados csv para db,
@@ -73,7 +74,7 @@ $ sqlite3 func_2015.db 'select * from FUNCAO'
 
 ### Importar Tabelas 3F
 
-Na pasta [MR](MR) temos o diagrama, modelo e script SQL das tabelas normalizadas na forma 3F, e para importá-las usando o SQLite3 basta executar os seguintes comandos:
+Na pasta [MR](MR) temos o diagrama, modelo e script SQL das tabelas normalizadas na forma 3F geradas a partir do MySQL Workbench, e para importá-las usando o SQLite3 basta executar os seguintes comandos:
 
 ``` bash
 $ cd MR
