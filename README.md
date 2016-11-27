@@ -9,11 +9,11 @@ Projeto que coleta dados abertos sobre o bolsa família e realiza CRUD e algumas
 - SQLite3
 
 ### Features:
-- Importar dados csv para db.
+- Importar dados csv para db,
+- DER,
+- MR.
 
 ### TODO:
-- DER,
-- MR,
 - Camadas de Apresentação,
 - Camada de Negócio,
 - Camada de Persistência.
@@ -70,6 +70,20 @@ O comando a seguir imprime em terminal todos os dados que estavam contidos no ar
 $ sqlite3 bf.db 'select * from FAVORECIDOS'
 $ sqlite3 func_2015.db 'select * from FUNCAO'
 ```
+
+### Importar Tabelas 3F
+
+Na pasta [MR](MR) temos o diagrama, modelo e script SQL das tabelas normalizadas na forma 3F, e para importá-las usando o SQLite3 basta executar os seguintes comandos:
+
+``` bash
+$ cd MR
+$ sqlite3
+$ sqlite> .read EER.sql
+```
+
+### Relatório
+
+Na pasta [doc](doc) contém o relatório do projeto com o passo a passo de desenvolvimento, desde a análise de cada campo nas tabelas até o desenvolvimento da GUI.
 
 ### Motivação
 
