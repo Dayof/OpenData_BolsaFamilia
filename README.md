@@ -35,16 +35,14 @@ O arquivo csv dos dados abertos pode ser encontrado neste [link](http://www.port
 
 ### Importar Dados (CSV)
 
-O script [import.sh](import.sh) executa o script [pre_import.sh](pre_import.sh) e os arquivos py [import_bf_csv.py](import_bf_csv.py) e [import_func_csv.py](import_func_csv.py) de acordo com a necessidade.
+O script [import.sh](import.sh) executa o script [pre_import.sh](pre_import.sh) e o arquivos py [import_bf_csv.py](import_bf_csv.py) de acordo com a necessidade.
 
 O script [pre_import.sh](pre_import.sh) trata os arquivos csvs da seguinte forma:
 - Renomeia os arquivos extraído para o nome utilizado no arquivo py
 - Elimina os headers dos csvs
 - Inclui headers corretos nos csvs
 
-O programa [import_bf_csv.py](import_bf_csv.py) irá importar os dados contidos no arquivo bf.csv usando o SQLite3 criando um arquivo do tipo db para manipular os dados importados.
-
-O programa [import_func_csv.py](import_func_csv.py) irá importar os dados contidos no arquivo func_2015.csv usando o SQLite3 criando um arquivo do tipo db para manipular os dados importados.
+O programa [import_bf_csv.py](import_bf_csv.py) irá importar os dados contidos no arquivo bf.csv e func_2015.csv usando o SQLite3 criando um arquivo do tipo db para manipular os dados importados. Ele também cria as tabelas primárias para importar os dados do CSV e também as tabelas normalizadas a nível 3F.
 
 AVISO: A execução a seguir pode levar um tempo, pois irá processar aproximadamente 2gb de dados.
 
@@ -61,20 +59,20 @@ Executando o script [import.sh](import.sh):
 $ bash import.sh
 ```
 
-Obs.: Os arquivos csv e db do bolsa família são muito extensos para incluí-los em um repositório Git, logo, deixe estes arquivos locais em sua máquina. O arquivo csv é baixado e o arquivo db é gerado.
+Obs.: Os arquivos csv e db são muito extensos para incluí-los em um repositório Git, logo, deixe estes arquivos locais em sua máquina. O arquivo csv é baixado e o arquivo db é gerado.
 
 ### Checar BD
 
 O comando a seguir imprime em terminal todos os dados que estavam contidos no arquivo csv.
 
 ``` bash
-$ sqlite3 bf.db 'select * from FAVORECIDOS'
-$ sqlite3 func_2015.db 'select * from FUNCAO'
+$ sqlite3 bf.db 'select * from BOLSA_FAMILIA'
+$ sqlite3 bf.db 'select * from FUNCAO_SUBFUNCAO'
 ```
 
 ### Importar Tabelas 3F
 
-Na pasta [MR](MR) temos o diagrama, modelo e script SQL das tabelas normalizadas na forma 3F geradas a partir do MySQL Workbench, e para importá-las usando o SQLite3 basta executar os seguintes comandos:
+Na pasta [MR](MR) temos o diagrama, modelo e script SQL das tabelas normalizadas na forma 3F geradas a partir do MySQL Workbench, para verificar o esquema das tabelas é só utilizar o SQLite3 executando os seguintes comandos:
 
 ``` bash
 $ cd MR

@@ -1,20 +1,18 @@
 #!bin/bash
 BF_DB="bf.db"
-FUNC_DB="func_2015.db"
+
+error()
+{
+	echo "################ ERROR BEFORE FINISHING THE SCRIPT ################"
+	exit
+}
 
 echo "Pré-processamento das tabelas iniciado..."
-bash pre_import.sh || exit
+bash pre_import.sh || error
 
 if [ -f "$BF_DB" ]; then
-    echo "Database do bolsa família já foi processado!"
+    echo "Database do bolsa família e funções já foram processados!"
 else
-    echo "Processando database da bolsa família..."
-    python3 import_bf_csv.py || exit
-fi
-
-if [ -f "$FUNC_DB" ]; then
-    echo "Database das classificações funcionais das despesas já foi processado!"
-else
-    echo "Processando database das funções..."
-    python3 import_func_csv.py || exit
+    echo "Processando database da bolsa família e das funções..."
+    python3 import_bf_csv.py || error
 fi
