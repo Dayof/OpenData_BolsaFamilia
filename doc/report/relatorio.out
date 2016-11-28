@@ -12,14 +12,8 @@
 \BOOKMARK [2][-]{subsection.5.1}{Extract}{section.5}% 12
 \BOOKMARK [2][-]{subsection.5.2}{Transform}{section.5}% 13
 \BOOKMARK [2][-]{subsection.5.3}{Load}{section.5}% 14
-\BOOKMARK [1][-]{section.6}{Scripts}{}% 15
-\BOOKMARK [1][-]{section.7}{Camadas}{}% 16
-\BOOKMARK [2][-]{subsection.7.1}{Persist\352ncia}{section.7}% 17
-\BOOKMARK [2][-]{subsection.7.2}{GUI}{section.7}% 18
-\BOOKMARK [1][-]{section.8}{Consultas}{}% 19
-\BOOKMARK [1][-]{section.9}{Views}{}% 20
-\BOOKMARK [1][-]{section.10}{Procedure}{}% 21
-\BOOKMARK [1][-]{section.11}{Trigger}{}% 22
-\BOOKMARK [1][-]{section.12}{Solu\347\343o das Perguntas}{}% 23
-\BOOKMARK [1][-]{section.13}{An\341lise dos Resultados}{}% 24
-\BOOKMARK [1][-]{section.14}{Conclus\343o}{}% 25
+\BOOKMARK [1][-]{section.6}{Camadas do Sistema para o CRUD}{}% 15
+\BOOKMARK [2][-]{subsection.6.1}{Persist\352ncia}{section.6}% 16
+\BOOKMARK [2][-]{subsection.6.2}{Apresenta\347\343o}{section.6}% 17
+\BOOKMARK [1][-]{section.7}{Consultas}{}% 18
+\BOOKMARK [1][-]{section.8}{An\341lise dos Resultados}{}% 19

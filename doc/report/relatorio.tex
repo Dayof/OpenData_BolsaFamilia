@@ -54,6 +54,8 @@
 	\section{Introdução}
 	\label{sec:intro}
 	
+	Todos os algoritmos, scripts e imagens comentadas neste relatório podem ser encontrados no repositório aberto do GitHub criado para o desenvolvimento deste projeto: \url{https://github.com/Dayof/OpenData_BolsaFamilia}. 
+	
 	\section{Diagrama de Entidade Relacionamento (DER)}
 	\label{sec:der}
 	
@@ -228,7 +230,7 @@
 	
 	\textbf{SOLUÇÃO PARA O PROBLEMA 2}: Implementar um script para substituir a primeira linha do arquivo extraído com nomes válidos para tratar.
 	
-	Dada as soluções acima elas foram executadas e os resultados foram obtidos com sucesso. Estes problemas foram resolvidos nas etapas 4 e 5 do processo de ETL. Os algoritmos utilizados na transformação dos dados podem ser encontrados no repositório aberto do GitHub criado para o desenvolvimento deste projeto: \url{https://github.com/Dayof/OpenData_BolsaFamilia}. 
+	Dada as soluções acima elas foram executadas e os resultados foram obtidos com sucesso. Estes problemas foram resolvidos nas etapas 4 e 5 do processo de ETL. 
 	
 	\subsection{Load}
 	\label{sec:l}
@@ -244,42 +246,30 @@
 		\item Execução das "QUERIES" utilizando Python 3 e o SQLite 3 (processo bastante demorado).
 	\end{itemize}
 	
-	Os algoritmos e scripts SQL utilizados no processo de carga dos dados podem ser encontrados no repositório aberto do GitHub criado para o desenvolvimento deste projeto: \url{https://github.com/Dayof/OpenData_BolsaFamilia}. 
-	
 	Por fim, ao final do processo de ETL os dados estão disponíveis para realizar o CRUD (Create, Read, Update e Delete).
 	
-	\section{Scripts}
-	\label{sec:scripts}
-	
-	\section{Camadas}
+	\section{Camadas do Sistema para o CRUD}
 	\label{sec:camadas}
+	
+	Com os dados prontos para realizar o CRUD (Create, Read, Update e Delete) chega o momento de implementar um sistema para ler estes dados e apresentar a algum usuário do sistema. O \textit{Design Pattern} de Persistência e Apresentação foi sugerido para aplicação. Como já estava sendo utilizado a linguagem de programação Python 3 no processo de importação dos dados abertos, foi então considerado em dar continuidade à utilização da linguagem para desenvolvimento do sistema.
+	
+	Por experiências prévias com Web Service com Python 3 e o Framework Web Flask de um membro da equipe que produziu este sistema foi então decidido a utilização destas ferramentas para implementar o sistema que irá executar o CRUD.
 	
 	\subsection{Persistência}
 	\label{sec:pers}
 	
-	\subsection{GUI}
-	\label{sec:gui}
+	A camada de persistência foi implementada utilizando o SQLite 3 e Python 3 para ler e escrever os dados no arquivo de banco de dados. Tanto a leitura quanto a escrita de algum dado seria passada através de alguma requisição do usuário na camada de Apresentação.
+	
+	\subsection{Apresentação}
+	\label{sec:apt}
+	
+	Foram utilizadas ferramentas como HTML e CSS para desenhar a camada de apresentação ao usuário. A ponte entre os \textit{templates} HTML e a camada de persistência é feita pelo Framework Web Flask.
 	
 	\section{Consultas} 
 	\label{sec:consultas}
 	
-	\section{Views}
-	\label{sec:views}
-	
-	\section{Procedure}
-	\label{sec:procedure}
-	
-	\section{Trigger}
-	\label{sec:trigger}
-	
-	\section{Solução das Perguntas}
-	\label{sec:analisep}
-	
 	\section{Análise dos Resultados}
 	\label{sec:resultados}
-	
-	\section{Conclusão}
-	\label{sec:conclusao}
 	
 \bibliographystyle{sbc}
 \bibliography{relatorio} 
