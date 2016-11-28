@@ -13,6 +13,15 @@
       <h1>...</h1>
       <br>
     <div id="content"></div>
+    <ul class="entries">
+     {% for entry in entries %}
+        <li>
+            <h2>{{ entry.nome_municipio|safe }}</h2>
+            {{  entry.codigo_siafi_municipio }} - {{  entry.uf }}
+        </li>
+    {% else %}
+        <li><em>Unbelievable.  No entries here so far</em></li>
+    {% endfor %}
     {% block body %}{% endblock %}
     </div>
     <!-- scripts -->

@@ -19,12 +19,11 @@ print(app.config)
 @app.route('/')
 def index():
     db = getDB()
-    cur = db.execute('select * from PROGRAMA;')
+    cur = db.execute('select * from MUNICIPIO;')
     entries = cur.fetchall()
-    print entries
-    return render_template('home.html', index_data=entries[0]["CODIGO_PROGRAMA"])
+    return render_template('home.html', entries=entries)
 
-def connect_db():
+def connectDB():
     """Connects to the specific database."""
     rv = sqlite3.connect(app.config['DATABASE'])
     rv.row_factory = sqlite3.Row
@@ -35,7 +34,7 @@ def getDB():
     current application context.
     """
     if not hasattr(g, 'sqlite_db'):
-        g.sqlite_db = connect_db()
+        g.sqlite_db = connectDB()
     return g.sqlite_db
 
 if __name__ == '__main__':
