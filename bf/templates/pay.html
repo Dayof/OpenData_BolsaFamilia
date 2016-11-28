@@ -1,0 +1,11 @@
+{% extends "home.html" %}
+{% block body %}
+    {% for entry in entries %}
+        <li>
+            <h2>{{ entry.NIS }} - {{ entry.Nome|safe }}</h2>
+            {{  entry.mes_competencia }} - {{  entry.valor_parcela|safe }}
+        </li>
+    {% else %}
+        <li><em>Unbelievable. No entries here so far</em></li>
+    {% endfor %}
+{% endblock %}
