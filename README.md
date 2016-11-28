@@ -42,7 +42,7 @@ O arquivo csv dos dados abertos pode ser encontrado neste [link](http://www.port
 O script [import.sh](import.sh) executa o script [pre_import.sh](pre_import.sh) e o arquivos py [import_bf_csv.py](import_bf_csv.py) de acordo com a necessidade.
 
 O script [pre_import.sh](pre_import.sh) trata os arquivos csvs da seguinte forma:
-- Renomeia os arquivos extraído para o nome utilizado no arquivo py
+- Renomeia os arquivos extraídos para o nome utilizado no arquivo py
 - Elimina os headers dos csvs
 - Inclui headers corretos nos csvs
 
@@ -64,6 +64,7 @@ $ bash import.sh
 ```
 
 Obs.: Os arquivos csv e db são muito extensos para incluí-los em um repositório Git, logo, deixe estes arquivos locais em sua máquina. O arquivo csv é baixado e o arquivo db é gerado.
+Obs.2: O arquivo de .db deve permanecer na pasta bf/.
 
 ### Checar BD
 
