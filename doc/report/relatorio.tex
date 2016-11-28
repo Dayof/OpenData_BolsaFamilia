@@ -57,7 +57,7 @@
 	\section{Diagrama de Entidade Relacionamento (DER)}
 	\label{sec:der}
 	
-	O Diagrama de Entidade Relacionamento do sistema, apresentado na Figura~\ref{fig:der} foi feito pensando já no MR, e depois alterado conforme a normalização no MR foi sendo realizada. Desse modo, temos no DER 7 entidades, das quais duas são entidades fracas. 
+	O Diagrama de Entidade Relacionamento do sistema, apresentado na Figura~\ref{fig:der} foi feito pensando já no MR, e depois alterado conforme a normalização no MR foi sendo realizada. A ferramenta utilizada para desenhar o diagrama foi a \cite{lucid}. Temos no DER 7 entidades, das quais duas são entidades fracas. 
 	
 	\begin{figure}[H]
 		\centering
@@ -116,17 +116,77 @@
 	\section{Modelo Relacional (MR)} 
 	\label{sec:mr}
 
+	O Modelo Relacional do sistema, apresentado na Figura~\ref{fig:mr} foi feito utilizando o software \cite{mysql}. Foi utilizado o modelo de diagrama do tipo EER (Enhanced Entity–Relationship), que difere pelo ER (Entity–Relationship) por ter possibilidade de adicionar especializações das entidades, agregação, associação, etc. Este tipo de modelo também é utilizado para apresentar um modelo relacional de tabelas.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{eer.png}
+		\caption{Modelo relacional do banco de dados dos pagamentos do Programa Bolsa Família (PBF).}
+		\label{fig:mr}
+	\end{figure}
+	
+	As entidades, atributos e relações do MR foram descritas na Seção~\ref{sec:der}. 
+	
+	A partir deste MR o software disponibiliza gerar um \textit{script} de criação das tabelas apresentadas no diagrama, portanto, este foi gerado e utilizado. Na Seção~\ref{sec:etl} iremos explicar melhor como foi realizada a parte de ETL (Extract, Transform, Load) das tabelas normalizadas apresentadas na Figura~\ref{fig:mr}.
+	
 	\section{Formas Normais}
 	\label{sec:fnormais}
 	
-	\subsection{1F}
-	\label{sec:1f}
+	Como foi possível observar na Seção~\ref{sec:der} e Seção~\ref{sec:mr} já foram apresentadas soluções normalizadas pois a tabela original que foi obtida através de um arquivo do tipo \textit{CSV} possui 12 atributos na mesma tabela. Na Seção~\ref{sec:etl} será exposto mais informações a respeito da extração, transformação e população das tabelas cruciais ao sistema aqui apresentado.
 	
-	\subsection{2F}
-	\label{sec:2f}
+	\subsection{1FN}
+	\label{sec:1fn}
 	
-	\subsection{3F}
-	\label{sec:3f}
+	A primeira forma normal (1FN) apresenta uma solução onde toda tabela é minimamente normalizada, sendo, o valor de cada coluna indivisível: \\
+	
+	\begin{center}
+		(UF, CODIGO-SIAFI-MUNICIPIO, NOME-MUNICIPIO, CODIGO-FUNCAO, CODIGO-SUBFUNCAO, CODIGO-PROGRAMA, CODIGO-ACAO, NIS-FAVORECIDO, NOME-FAVORECIDO, FONTE-FINALIDADE, VALOR-PARCELA, MES-COMPETENCIA) 
+		\label{tab:1fn}
+	\end{center} 
+	
+	Nesta forma os resultados apresentam muita redundância de dados, principalmente ao lidar com um banco de dados extenso como este. Também possui problemas de inserção, remoção e atualização. Logo na próxima sub-seção vamos apresentar uma forma normal mais enxuta. 
+	
+	\subsection{2FN}
+	\label{sec:2fn}
+	
+	Avaliando às dependências funcionais dos atributos é possível gerar a segunda forma normal (2FN). Se a tabela está em 1FN e todo atributo do complemento de uma chave candidata é \textbf{totalmente funcionalmente dependente} daquela chave então a tabela estará em 2FN:
+	
+	\begin{center}
+		1$ª$ Tabela \\ (CODIGO-SIAFI-MUNICIPIO) $\rightarrow$ NOME-MUNICIPIO, UF \\
+		2$ª$ Tabela \\
+		(NIS-FAVORECIDO) $\rightarrow$ NOME-FAVORECIDO \\
+		3$ª$ Tabela \\
+		(CODIGO-PROGRAMA, CODIGO-ACAO) $\rightarrow$ CODIGO-FUNCAO, CODIGO-SUBFUNCAO, FONTE-FINALIDADE \\
+		4$ª$ Tabela \\
+		(NIS-FAVORECIDO, MES-COMPETENCIA, CODIGO-PROGRAMA) $\rightarrow$ VALOR-PARCELA \\
+		\label{tab:2fn}
+	\end{center} 
+	
+	Mesmo na forma 2FN ainda possuem atributos transitivamente dependentes, logo, na próxima sub-seção vamos estudar estes casos para uma maior melhora das tabelas.
+	
+	\subsection{3FN}
+	\label{sec:3fn}
+	
+	A transitividade de dependência nos permite melhorar as tabelas encontradas da sub-seção anterior, portanto, se uma tabela está na forma 2FN e todos os atributos não-chave forem \textbf{dependentes não-transitivos} de chave primária teremos uma relação de normalização 3FN:
+	
+	\begin{center}
+		1$ª$ Tabela \\ (CODIGO-SIAFI-MUNICIPIO) $\rightarrow$ NOME-MUNICIPIO, UF \\
+		2$ª$ Tabela \\
+		(NIS-FAVORECIDO) $\rightarrow$ NOME-FAVORECIDO \\
+		3$ª$ Tabela \\
+		(CODIGO-PROGRAMA, CODIGO-ACAO) $\rightarrow$ CODIGO-SUBFUNCAO, FONTE-FINALIDADE \\
+		4$ª$ Tabela \\
+		(NIS-FAVORECIDO, MES-COMPETENCIA, CODIGO-PROGRAMA) $\rightarrow$ VALOR-PARCELA \\
+		5$ª$ Tabela \\
+		(CODIGO-SUBFUNCAO) $\rightarrow$ NOME-SUBFUNCAO \\
+		6$ª$ Tabela \\
+		(CODIGO-FUNCAO) $\rightarrow$ NOME-FUNCAO 
+		\label{tab:3fn} 
+	\end{center} 
+	
+		A 3$ª$ tabela foi alterada pois o CODIGO-FUNCAO é dependente transitivo da chave composta (CODIGO-PROGRAMA, CODIGO-ACAO). A tabela 6 serviu para separar esta dependência transitiva da tabela 3. 
+		
+		A tabela 5 surgiu somente para fins de clareza do significado do CODIGO-SUBFUNCAO do programa e ação. O atributo de NOME-FUNCAO foi adicionado na tabela 6 pela mesma justificativa.
 	
 	\section{Script geral}
 	\label{sec:scriptg}

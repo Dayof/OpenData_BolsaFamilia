@@ -13,4 +13,10 @@ LucidChart (2016).
 \newblock \url{https://www.lucidchart.com/demo}.
 \newblock Software.
 
+\bibitem[MySQLWorkbench 2016]{mysql}
+MySQLWorkbench (2016).
+\newblock Mysql workbench, software de modelagem de banco de dados.
+\newblock \url{http://www.mysql.com/products/workbench/}.
+\newblock Software.
+
 \end{thebibliography}
