@@ -9,20 +9,23 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   </head>
   <body>
-    <div class="container">
-      <h1>...</h1>
-      <br>
-    <div id="content"></div>
-    <ul class="entries">
-     {% for entry in entries %}
-        <li>
-            <h2>{{ entry.nome_municipio|safe }}</h2>
-            {{  entry.codigo_siafi_municipio }} - {{  entry.uf }}
-        </li>
-    {% else %}
-        <li><em>Unbelievable.  No entries here so far</em></li>
-    {% endfor %}
-    {% block body %}{% endblock %}
+    <div class="page">
+        <h1>Bolsa Família - 09/15</h1>
+        {% for message in get_flashed_messages() %}
+            <div class="flash">{{ message }}</div>
+        {% endfor %}
+        <ul class="entries">
+            {% block body %}
+                {% for entry in entries %}
+                    <li>
+                        <h2>{{ entry.FAVORECIDO_NIS_FAVORECIDO }}</h2>
+                        {{  entry.MES_COMPETENCIA }} - {{  entry.VALOR_PARCELA|safe }}
+                    </li>
+                {% else %}
+                    <li><em>Unbelievable. No entries here so far</em></li>
+                {% endfor %}
+            {% endblock %}
+        </ul>
     </div>
     <!-- scripts -->
   </body>
