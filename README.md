@@ -6,7 +6,11 @@ Projeto que coleta dados abertos sobre o bolsa família e realiza CRUD e algumas
 ### Ferramentas utilizadas
 
 - Python 3
-- SQLite3
+- Virtualenv
+- Pip
+- Flask
+- Bash Script
+- SQLite 3
 - MySQL Workbench
 
 ### Features:
@@ -84,6 +88,39 @@ Para inserir os dados abertos nas tabelas normalizadas em 3F é só executar o s
 
 ``` bash
 $ sqlite3 bf.db < normalize.sql
+```
+
+### Web Service
+
+Utilizando o Python 3 e o framework web Flask foram implementadas camadas de persistência e apresentação para possibilitar o CRUD do sistema e as consultas no banco de dados.
+
+- Criar environment do sistema:
+
+``` bash
+$ virtualenv env
+```
+
+- Para instalar o Flask e continuar a desenvolver:
+
+``` bash
+$ . env/bin/activate
+$ export BF_SETTINGS=config.py
+$ pip install --editable .
+$ export FLASK_APP=bf
+```
+
+- Para iniciar o Web Service:
+
+``` bash
+$ flask run
+```
+
+A aplicação estará ativa no endereço http://localhost:5000/ .
+
+- Para sair do environment:
+
+``` bash
+$ deactivate
 ```
 
 ### Relatório
