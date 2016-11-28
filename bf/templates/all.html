@@ -1,0 +1,98 @@
+{% extends "home.html" %}
+{% block body %}
+
+    <h2>Formulário para adicionar um novo favorecido</h2>
+
+    <form action="{{ url_for('addFav') }}" method="post" class="add-entry">
+        <dl>
+            <dt>Nome:
+            <dd><input type="text" size="30" name="nome_fav">
+            <dt>NIS (15 char):
+            <dd><input type="text" size="30" name="nis_fav">
+            <dt>SIAFI (4 char):
+            <dd><input type="text" size="30" name="siafi">
+            <dd><input type="submit" value="Share">
+        </dl>
+    </form>
+
+    <h2>Formulário para editar um favorecido</h2>
+
+    <form action="{{ url_for('editFav') }}" method="post" class="add-entry">
+        <dl>
+            <dt>Novo nome do favorecido:
+            <dd><input type="text" size="30" name="nome_fav">
+            <dt>NIS (15 char):
+            <dd><input type="text" size="30" name="nis_fav">
+            <dd><input type="submit" value="Share">
+        </dl>
+    </form>
+
+    <h2>Formulário para deletar um favorecido</h2>
+
+    <form action="{{ url_for('delFav') }}" method="post" class="add-entry">
+        <dl>
+            <dt>NIS (15 char):
+            <dd><input type="text" size="30" name="nis_fav">
+            <dd><input type="submit" value="Share">
+        </dl>
+    </form>
+
+    <h2>Formulário para adicionar pagamentos a um novo favorecido</h2>
+
+    <form action="{{ url_for('addPag') }}" method="post" class="add-entry">
+        <dl>
+            <dt>Nome:
+            <dd><input type="text" size="30" name="nome_fav">
+            <dt>NIS (15 char):
+            <dd><input type="text" size="30" name="nis_fav">
+            <dt>SIAFI (4 char):
+            <dd><input type="text" size="30" name="siafi">
+            <dt>Programa (4 char):
+            <dd><input type="text" size="30" name="cod_programa">
+            <dt>Mês/Ano (ex: 08/2015):
+            <dd><input type="text" size="30" name="mes">
+            <dt>Valor da Parcela (ex: 400,00):
+            <dd><input type="text" size="30" name="valor">
+            <dd><input type="submit" value="Share">
+        </dl>
+    </form>
+
+    <h2>Formulário para editar algum pagamento de um favorecido</h2>
+
+    <form action="{{ url_for('editPag') }}" method="post" class="add-entry">
+        <dl>
+            <dt>NIS (15 char):
+            <dd><input type="text" size="30" name="nis_fav">
+            <dt>Programa (4 char):
+            <dd><input type="text" size="30" name="cod_programa">
+            <dt>Mês/Ano (ex: 08/2015):
+            <dd><input type="text" size="30" name="mes">
+            <dt>Novo valor da Parcela (ex: 400,00):
+            <dd><input type="text" size="30" name="new_valor">
+            <dd><input type="submit" value="Share">
+        </dl>
+    </form>
+
+    <h2>Formulário para deletar algum pagamento de um determinado favorecido</h2>
+
+    <form action="{{ url_for('delPag') }}" method="post" class="add-entry">
+        <dl>
+            <dt>NIS (15 char):
+            <dd><input type="text" size="30" name="nis_fav">
+            <dt>Programa (4 char):
+            <dd><input type="text" size="30" name="cod_programa">
+            <dt>Mês/Ano (ex: 08/2015):
+            <dd><input type="text" size="30" name="mes">
+            <dd><input type="submit" value="Share">
+        </dl>
+    </form>
+
+    {% for entry in entries %}
+        <li>
+            <h2>{{ entry.Nome|safe }}</h2>
+            {{  entry.NIS }}
+        </li>
+    {% else %}
+        <li><em>Unbelievable. No entries here so far</em></li>
+    {% endfor %}
+{% endblock %}
