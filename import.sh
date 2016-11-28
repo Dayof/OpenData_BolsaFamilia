@@ -1,5 +1,6 @@
 #!bin/bash
-BF_DB="bf.db"
+DIR_BF=bf
+BF_DB="DIR_BF/bf.db"
 
 error()
 {
@@ -15,4 +16,5 @@ if [ -f "$BF_DB" ]; then
 else
     echo "Processando database da bolsa família e das funções..."
     python3 import_bf_csv.py || error
+	mv bf.db bf/
 fi
