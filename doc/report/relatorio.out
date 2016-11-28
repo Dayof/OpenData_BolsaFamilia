@@ -8,15 +8,18 @@
 \BOOKMARK [2][-]{subsection.4.1}{1FN}{section.4}% 8
 \BOOKMARK [2][-]{subsection.4.2}{2FN}{section.4}% 9
 \BOOKMARK [2][-]{subsection.4.3}{3FN}{section.4}% 10
-\BOOKMARK [1][-]{section.5}{Script geral}{}% 11
-\BOOKMARK [1][-]{section.6}{ETL}{}% 12
-\BOOKMARK [1][-]{section.7}{Camadas}{}% 13
-\BOOKMARK [2][-]{subsection.7.1}{Persist\352ncia}{section.7}% 14
-\BOOKMARK [2][-]{subsection.7.2}{GUI}{section.7}% 15
-\BOOKMARK [1][-]{section.8}{Consultas}{}% 16
-\BOOKMARK [1][-]{section.9}{Views}{}% 17
-\BOOKMARK [1][-]{section.10}{Procedure}{}% 18
-\BOOKMARK [1][-]{section.11}{Trigger}{}% 19
-\BOOKMARK [1][-]{section.12}{Solu\347\343o das Perguntas}{}% 20
-\BOOKMARK [1][-]{section.13}{An\341lise dos Resultados}{}% 21
-\BOOKMARK [1][-]{section.14}{Conclus\343o}{}% 22
+\BOOKMARK [1][-]{section.5}{Extract, Transform, Load \(ETL\)}{}% 11
+\BOOKMARK [2][-]{subsection.5.1}{Extract}{section.5}% 12
+\BOOKMARK [2][-]{subsection.5.2}{Transform}{section.5}% 13
+\BOOKMARK [2][-]{subsection.5.3}{Load}{section.5}% 14
+\BOOKMARK [1][-]{section.6}{Scripts}{}% 15
+\BOOKMARK [1][-]{section.7}{Camadas}{}% 16
+\BOOKMARK [2][-]{subsection.7.1}{Persist\352ncia}{section.7}% 17
+\BOOKMARK [2][-]{subsection.7.2}{GUI}{section.7}% 18
+\BOOKMARK [1][-]{section.8}{Consultas}{}% 19
+\BOOKMARK [1][-]{section.9}{Views}{}% 20
+\BOOKMARK [1][-]{section.10}{Procedure}{}% 21
+\BOOKMARK [1][-]{section.11}{Trigger}{}% 22
+\BOOKMARK [1][-]{section.12}{Solu\347\343o das Perguntas}{}% 23
+\BOOKMARK [1][-]{section.13}{An\341lise dos Resultados}{}% 24
+\BOOKMARK [1][-]{section.14}{Conclus\343o}{}% 25

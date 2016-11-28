@@ -4,45 +4,46 @@ The top-level auxiliary file: relatorio.aux
 The style file: sbc.bst
 Database file #1: relatorio.bib
 Warning--empty year in caixa
-You've used 3 entries,
+Warning--empty year in siafi
+You've used 5 entries,
             1935 wiz_defined-function locations,
-            485 strings with 4034 characters,
-and the built_in function-call counts, 777 in all, are:
-= -- 84
-> -- 21
-< -- 3
-+ -- 6
-- -- 6
-* -- 43
-:= -- 159
-add.period$ -- 12
-call.type$ -- 3
-change.case$ -- 18
-chr.to.int$ -- 3
-cite$ -- 4
-duplicate$ -- 30
-empty$ -- 46
-format.name$ -- 9
-if$ -- 142
+            494 strings with 4303 characters,
+and the built_in function-call counts, 1283 in all, are:
+= -- 140
+> -- 35
+< -- 5
++ -- 10
+- -- 10
+* -- 71
+:= -- 260
+add.period$ -- 20
+call.type$ -- 5
+change.case$ -- 30
+chr.to.int$ -- 5
+cite$ -- 7
+duplicate$ -- 50
+empty$ -- 76
+format.name$ -- 15
+if$ -- 236
 int.to.chr$ -- 1
 int.to.str$ -- 0
 missing$ -- 0
-newline$ -- 21
-num.names$ -- 9
-pop$ -- 8
+newline$ -- 33
+num.names$ -- 15
+pop$ -- 14
 preamble$ -- 1
-purify$ -- 18
+purify$ -- 30
 quote$ -- 0
-skip$ -- 26
+skip$ -- 42
 stack$ -- 0
-substring$ -- 36
+substring$ -- 60
 swap$ -- 0
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 18
-warning$ -- 1
-while$ -- 6
+type$ -- 30
+warning$ -- 2
+while$ -- 10
 width$ -- 0
-write$ -- 43
-(There was 1 warning)
+write$ -- 70
+(There were 2 warnings)

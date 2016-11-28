@@ -11,15 +11,18 @@
 \contentsline {subsection}{\numberline {4.1}1FN}{7}{subsection.4.1}
 \contentsline {subsection}{\numberline {4.2}2FN}{7}{subsection.4.2}
 \contentsline {subsection}{\numberline {4.3}3FN}{7}{subsection.4.3}
-\contentsline {section}{\numberline {5}Script geral}{8}{section.5}
-\contentsline {section}{\numberline {6}ETL}{8}{section.6}
-\contentsline {section}{\numberline {7}Camadas}{8}{section.7}
-\contentsline {subsection}{\numberline {7.1}Persist\IeC {\^e}ncia}{8}{subsection.7.1}
-\contentsline {subsection}{\numberline {7.2}GUI}{8}{subsection.7.2}
-\contentsline {section}{\numberline {8}Consultas}{8}{section.8}
-\contentsline {section}{\numberline {9}Views}{8}{section.9}
-\contentsline {section}{\numberline {10}Procedure}{8}{section.10}
-\contentsline {section}{\numberline {11}Trigger}{8}{section.11}
-\contentsline {section}{\numberline {12}Solu\IeC {\c c}\IeC {\~a}o das Perguntas}{8}{section.12}
-\contentsline {section}{\numberline {13}An\IeC {\'a}lise dos Resultados}{8}{section.13}
-\contentsline {section}{\numberline {14}Conclus\IeC {\~a}o}{8}{section.14}
+\contentsline {section}{\numberline {5}Extract, Transform, Load (ETL)}{8}{section.5}
+\contentsline {subsection}{\numberline {5.1}Extract}{8}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Transform}{9}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Load}{9}{subsection.5.3}
+\contentsline {section}{\numberline {6}Scripts}{10}{section.6}
+\contentsline {section}{\numberline {7}Camadas}{10}{section.7}
+\contentsline {subsection}{\numberline {7.1}Persist\IeC {\^e}ncia}{10}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}GUI}{10}{subsection.7.2}
+\contentsline {section}{\numberline {8}Consultas}{10}{section.8}
+\contentsline {section}{\numberline {9}Views}{10}{section.9}
+\contentsline {section}{\numberline {10}Procedure}{10}{section.10}
+\contentsline {section}{\numberline {11}Trigger}{10}{section.11}
+\contentsline {section}{\numberline {12}Solu\IeC {\c c}\IeC {\~a}o das Perguntas}{10}{section.12}
+\contentsline {section}{\numberline {13}An\IeC {\'a}lise dos Resultados}{10}{section.13}
+\contentsline {section}{\numberline {14}Conclus\IeC {\~a}o}{10}{section.14}

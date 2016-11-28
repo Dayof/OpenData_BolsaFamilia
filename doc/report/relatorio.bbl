@@ -7,6 +7,12 @@ CaixaGov.
   \url{http://www.caixa.gov.br/programas-sociais/bolsa-familia/Paginas/default.aspx}.
 \newblock [Online; accessed 23-November-2016].
 
+\bibitem[CNM ]{siafi}
+CNM.
+\newblock Cnm - confederação nacional de municípios.
+\newblock \url{www.cnm.org.br}.
+\newblock [Online; accessed 23-November-2016].
+
 \bibitem[LucidChart 2016]{lucid}
 LucidChart (2016).
 \newblock Lucid chart.
@@ -18,5 +24,12 @@ MySQLWorkbench (2016).
 \newblock Mysql workbench, software de modelagem de banco de dados.
 \newblock \url{http://www.mysql.com/products/workbench/}.
 \newblock Software.
+
+\bibitem[PortaldaTransparência 2004]{portal}
+PortaldaTransparência (2004).
+\newblock Portal da transparência - governo federal - ministério da
+  transparência, fiscalização e controladoria-geral da união.
+\newblock \url{http://www.portaltransparencia.gov.br}.
+\newblock [Online; accessed 23-November-2016].
 
 \end{thebibliography}

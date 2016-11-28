@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.10)  28 NOV 2016 05:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.10)  28 NOV 2016 06:50
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -989,7 +989,7 @@ Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 54.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 57.
- <der.png, id=134, 597.432pt x 444.9423pt>
+ <der.png, id=149, 597.432pt x 444.9423pt>
 File: der.png Graphic file (type png)
  <use der.png>
 Package pdftex.def Info: der.png used on input line 64.
@@ -1031,7 +1031,7 @@ Package babel Info: Redefining portuges shorthand "|
  [5]
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 116.
- <eer.png, id=156, 1080.035pt x 543.02875pt>
+ <eer.png, id=172, 1080.035pt x 543.02875pt>
 File: eer.png Graphic file (type png)
  <use eer.png>
 Package pdftex.def Info: eer.png used on input line 123.
@@ -1105,29 +1105,56 @@ LaTeX Warning: Command \textordfeminine invalid in math mode on input line 187.
 
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 191.
+
+Underfull \hbox (badness 10000) in paragraph at lines 197--198
+[]\OT1/ptm/m/n/12 Fazer o down-load dos ar-qui-vos CSV dis-pon[]^^Pveis no
+ []
+
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 194.
+(babel)             in language  on input line 207.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 197.
+(babel)             in language  on input line 213.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 200.
+(babel)             in language  on input line 213.
+[8]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 203.
+(babel)             in language  on input line 216.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 206.
+(babel)             in language  on input line 233.
+
+Underfull \hbox (badness 1546) in paragraph at lines 241--242
+[]\OT1/ptm/m/n/12 Primeiramente o script SQL de cria[][]ao das ta-be-las ge-rad
+o pelo soft-ware
+ []
+
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 209.
+(babel)             in language  on input line 248.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 212.
+(babel)             in language  on input line 248.
+[9]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 215.
+(babel)             in language  on input line 251.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 218.
+(babel)             in language  on input line 254.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 221.
+(babel)             in language  on input line 257.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 224.
-(./relatorio.bbl
+(babel)             in language  on input line 260.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 263.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 266.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 269.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 272.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 275.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 278.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 281.
+ (./relatorio.bbl
 Underfull \hbox (badness 4673) in paragraph at lines 4--9
 []\OT1/ptm/m/n/12 CaixaGov.  Caixa - pro-gra-mas so-ci-ais - bolsa fam[]^^Plia.
   []$\OT1/pcr/m/n/12 http :
@@ -1140,33 +1167,33 @@ lia /
  []
 
 
-Underfull \hbox (badness 3098) in paragraph at lines 17--21
+Underfull \hbox (badness 3098) in paragraph at lines 23--27
 []\OT1/ptm/m/n/12 MySQLWorkbench (2016).  Mysql work-bench, soft-ware
  []
 
 )
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 232.
+(babel)             in language  on input line 289.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 232.
- [8]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 232.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 232.
+(babel)             in language  on input line 289.
+ [10]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 289.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 289.
  (./relatorio.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 232.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 232.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 289.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 289.
 Package rerunfilecheck Info: File `relatorio.out' has not changed.
-(rerunfilecheck)             Checksum: 278EB60990456FA979F6B7F41F21F76B;1216.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 232.
+(rerunfilecheck)             Checksum: 60C5677C20B61A0D5404DE117D1F4929;1410.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 289.
  ) 
 Here is how much of TeX's memory you used:
- 18655 strings out of 493089
- 340380 string characters out of 6134841
- 421830 words of memory out of 5000000
- 21738 multiletter control sequences out of 15000+600000
+ 18686 strings out of 493089
+ 340720 string characters out of 6134841
+ 421060 words of memory out of 5000000
+ 21756 multiletter control sequences out of 15000+600000
  23133 words of font info for 48 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,10n,56p,949b,442s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,10n,56p,949b,458s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texl
 ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texli
@@ -1176,10 +1203,10 @@ ist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/
 type1/urw/times/utmbi8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw
 /times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utm
 ri8a.pfb>
-Output written on relatorio.pdf (8 pages, 223203 bytes).
+Output written on relatorio.pdf (10 pages, 230889 bytes).
 PDF statistics:
- 224 PDF objects out of 1000 (max. 8388607)
- 201 compressed objects within 3 object streams
- 36 named destinations out of 1000 (max. 500000)
- 199 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 270 PDF objects out of 1000 (max. 8388607)
+ 245 compressed objects within 3 object streams
+ 49 named destinations out of 1000 (max. 500000)
+ 223 words of extra memory for PDF output out of 10000 (max. 10000000)
 

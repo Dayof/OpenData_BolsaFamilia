@@ -188,11 +188,68 @@
 		
 		A tabela 5 surgiu somente para fins de clareza do significado do CODIGO-SUBFUNCAO do programa e ação. O atributo de NOME-FUNCAO foi adicionado na tabela 6 pela mesma justificativa.
 	
-	\section{Script geral}
-	\label{sec:scriptg}
-	
-	\section{ETL}
+	\section{Extract, Transform, Load (ETL)}
 	\label{sec:etl}
+	
+	A extração, transformação e carregamento dos dados foi realizada de acordo com os seguintes passos:
+	
+	\begin{enumerate}
+		\item Fazer o download dos arquivos CSV disponíveis no \cite{portal};
+		\item Extrair os arquivos baixados que vieram em formato ZIP de compreensão na pasta de desenvolvimento do projeto;
+		\item Estudar o conteúdo dos arquivos extraídos;
+		\item Pré-processar os arquivos extraídos para importar para um formato de banco de dados;
+		\item Importar os arquivos CSV pra um arquivo único de DB (Database);
+		\item Criar tabelas e popular as tabelas normalizadas utilizando as tabelas originais extraídas.
+	\end{enumerate}
+	
+	As etapas 1 e 2 pertencem à parte de extração dos dados, já as etapas 3, 4 e 5 fazem parte do processo de transformação dos dados. A etapa 6 é elemento do processo de carga de dados.
+	
+	\subsection{Extract}
+	\label{sec:e}
+	
+	A extração dos dados foi obtida através do \cite{portal}. Foi possível obter dados aberto sobre o Programa Bolsa Família (PBF), utilizando como objeto de estudo um determinado ano e mês. Também foram extraídos dados aberto sobre a Função e Subfunção de recursos e gastos diretos do governo federal.
+	
+	A primeira extração foi sobre os pagamentos da Bolsa Família para cada favorecido na data de Setembro/2015. A segunda extração foi sobre a Classificação Funcional da Despesa (MTO), onde, possui informações em formato aberto da classificação funcional da Despesa, publicada no Manual Técnico de Orçamento, pelo Ministério do Planejamento, do ano de 2015.
+	
+	O \cite{portal} disponibiliza arquivos de formato CSV (Comma-separated values) sobre todos os dados lá contidos. Os arquivos CSV foram baixados e extraídos na pasta de desenvolvimento do projeto.
+	
+	\subsection{Transform}
+	\label{sec:t}
+	
+	Como foi dito na etapa 3, os arquivos foram estudados e analisados antes da importação para um arquivo de banco de dados. Na análise foram descobertos dois problemas:
+	
+	\textbf{PROBLEMA 1}: Os arquivos não eram de fato do formato CSV e sim TSV (Tab-separated values). 
+	
+	\textbf{PROBLEMA 2}: Os nomes dos atributos de cada "coluna" possuíam codificação não padrão, ou seja, acento nas palavras. 
+	
+	Sendo assim, diante destes 2 problemas encontrados foram pesquisadas soluções para tratar os dados extraídos.
+	
+	\textbf{SOLUÇÃO PARA O PROBLEMA 1}: Utilizar SQLite 3 e Python 3 para tratar as importações dos arquivos TSV para arquivos DB, pois, eles dão suporte para importar este tipo de formato.
+	
+	\textbf{SOLUÇÃO PARA O PROBLEMA 2}: Implementar um script para substituir a primeira linha do arquivo extraído com nomes válidos para tratar.
+	
+	Dada as soluções acima elas foram executadas e os resultados foram obtidos com sucesso. Estes problemas foram resolvidos nas etapas 4 e 5 do processo de ETL. Os algoritmos utilizados na transformação dos dados podem ser encontrados no repositório aberto do GitHub criado para o desenvolvimento deste projeto: \url{https://github.com/Dayof/OpenData_BolsaFamilia}. 
+	
+	\subsection{Load}
+	\label{sec:l}
+	
+	Na etapa 6 ficou estipulado que as tabelas obtidas do MR apresentado na Seção~\ref{sec:mr} seriam criadas e populadas a partir das tabelas originais extraídas das fontes externas de dados abertos.
+	
+	Após a extração e tratamento destes dados foi alcançada a parte de carga de dados nas tabelas normalizadas 3FN. 
+	
+	\begin{itemize}
+		\item Primeiramente o script SQL de criação das tabelas gerado pelo software \cite{mysql} foi modificado para se adequar à linguagem aceita pelo SQLite 3;
+		\item Foram estudadas "QUERIES" para extrair os dados das tabelas originais e inserir nas tabelas normalizadas de forma adequada;
+		\item Implementação das "QUERIES";
+		\item Execução das "QUERIES" utilizando Python 3 e o SQLite 3 (processo bastante demorado).
+	\end{itemize}
+	
+	Os algoritmos e scripts SQL utilizados no processo de carga dos dados podem ser encontrados no repositório aberto do GitHub criado para o desenvolvimento deste projeto: \url{https://github.com/Dayof/OpenData_BolsaFamilia}. 
+	
+	Por fim, ao final do processo de ETL os dados estão disponíveis para realizar o CRUD (Create, Read, Update e Delete).
+	
+	\section{Scripts}
+	\label{sec:scripts}
 	
 	\section{Camadas}
 	\label{sec:camadas}
