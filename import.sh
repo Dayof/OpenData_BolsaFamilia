@@ -16,5 +16,7 @@ if [ -f "$BF_DB" ]; then
 else
     echo "Processando database da bolsa família e das funções..."
     python3 import_bf_csv.py || error
+	echo "Populando database das tabelas normalizadas..."
+    python3 pop.py || error
 	mv bf.db bf/
 fi

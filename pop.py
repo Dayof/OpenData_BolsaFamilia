@@ -1,0 +1,216 @@
+import csv, sqlite3
+
+conn = sqlite3.connect("bf.db")
+cur = conn.cursor()
+
+print("DROPS NAS TABELAS NORMALIZADAS...")
+
+cur.executescript("""
+    DROP TABLE IF EXISTS `MUNICIPIO` ;
+    DROP TABLE IF EXISTS `FAVORECIDO` ;
+    DROP TABLE IF EXISTS `PROGRAMA` ;
+    DROP TABLE IF EXISTS `PAGAMENTO` ;
+    DROP TABLE IF EXISTS `FUNCAO` ;
+    DROP TABLE IF EXISTS `SUBFUNCAO` ;
+    DROP TABLE IF EXISTS `ACAO` ;
+""")
+
+print("DROPS NAS TABELAS NORMALIZADAS...COMPLETO")
+
+print("CRIAÇÃO DAS TABELAS NORMALIZADAS...")
+
+cur.executescript("""
+    -- -----------------------------------------------------
+    -- Table `MUNICIPIO`
+    -- -----------------------------------------------------
+    CREATE TABLE IF NOT EXISTS `MUNICIPIO` (
+        `CODIGO_SIAFI_MUNICIPIO` VARCHAR(4) NOT NULL,
+        `NOME_MUNICIPIO` VARCHAR(15) NULL,
+        `UF` VARCHAR(2) NULL,
+        PRIMARY KEY (`CODIGO_SIAFI_MUNICIPIO`));
+
+    -- -----------------------------------------------------
+    -- Table `FAVORECIDO`
+    -- -----------------------------------------------------
+    CREATE TABLE IF NOT EXISTS `FAVORECIDO` (
+      `NIS_FAVORECIDO` VARCHAR(15) NOT NULL,
+      `NOME_FAVORECIDO` VARCHAR(50) NULL,
+      `MUNICIPIO_CODIGO_SIAFI_MUNICIPIO` VARCHAR(4) NOT NULL,
+      PRIMARY KEY (`NIS_FAVORECIDO`),
+      CONSTRAINT `fk_FAVORECIDO_MUNICIPIO`
+        FOREIGN KEY (`MUNICIPIO_CODIGO_SIAFI_MUNICIPIO`)
+        REFERENCES `MUNICIPIO` (`CODIGO_SIAFI_MUNICIPIO`)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION);
+
+    -- -----------------------------------------------------
+    -- Table `PROGRAMA`
+    -- -----------------------------------------------------
+    CREATE TABLE IF NOT EXISTS `PROGRAMA` (
+      `CODIGO_PROGRAMA` VARCHAR(4) NOT NULL,
+      `NOME_PROGRAMA` VARCHAR(50) NULL,
+      PRIMARY KEY (`CODIGO_PROGRAMA`));
+
+    -- -----------------------------------------------------
+    -- Table `PAGAMENTO`
+    -- -----------------------------------------------------
+    CREATE TABLE IF NOT EXISTS `PAGAMENTO` (
+      `PROGRAMA_CODIGO_PROGRAMA` VARCHAR(4) NOT NULL,
+      `FAVORECIDO_NIS_FAVORECIDO` VARCHAR(15) NOT NULL,
+      `MES_COMPETENCIA` VARCHAR(10) NOT NULL,
+      `VALOR_PARCELA` VARCHAR(8) NULL,
+      PRIMARY KEY (`PROGRAMA_CODIGO_PROGRAMA`, `FAVORECIDO_NIS_FAVORECIDO`, `MES_COMPETENCIA`),
+      CONSTRAINT `fk_PROGRAMA_has_FAVORECIDO_PROGRAMA1`
+        FOREIGN KEY (`PROGRAMA_CODIGO_PROGRAMA`)
+        REFERENCES `PROGRAMA` (`CODIGO_PROGRAMA`)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION,
+      CONSTRAINT `fk_PROGRAMA_has_FAVORECIDO_FAVORECIDO1`
+        FOREIGN KEY (`FAVORECIDO_NIS_FAVORECIDO`)
+        REFERENCES `FAVORECIDO` (`NIS_FAVORECIDO`)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION);
+
+    -- -----------------------------------------------------
+    -- Table `FUNCAO`
+    -- -----------------------------------------------------
+    CREATE TABLE IF NOT EXISTS `FUNCAO` (
+      `CODIGO_FUNCAO` VARCHAR(2) NOT NULL,
+      `NOME_FUNCAO` VARCHAR(50) NULL,
+      PRIMARY KEY (`CODIGO_FUNCAO`));
+
+    -- -----------------------------------------------------
+    -- Table `SUBFUNCAO`
+    -- -----------------------------------------------------
+    CREATE TABLE IF NOT EXISTS `SUBFUNCAO` (
+      `CODIGO_SUBFUNCAO` VARCHAR(3) NOT NULL,
+      `NOME_SUBFUNCAO` VARCHAR(50) NULL,
+      `FUNCAO_CODIGO_FUNCAO` VARCHAR(2) NOT NULL,
+      PRIMARY KEY (`CODIGO_SUBFUNCAO`),
+      CONSTRAINT `fk_SUBFUNCAO_FUNCAO1`
+        FOREIGN KEY (`FUNCAO_CODIGO_FUNCAO`)
+        REFERENCES `FUNCAO` (`CODIGO_FUNCAO`)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION);
+
+    -- -----------------------------------------------------
+    -- Table `ACAO`
+    -- -----------------------------------------------------
+    CREATE TABLE IF NOT EXISTS `ACAO` (
+      `CODIGO_ACAO` VARCHAR(4) NOT NULL,
+      `NOME_ACAO` VARCHAR(100) NULL,
+      `FONTE_FINALIDADE` VARCHAR(50) NULL,
+      `PROGRAMA_CODIGO_PROGRAMA` VARCHAR(4) NOT NULL,
+      `SUBFUNCAO_CODIGO_SUBFUNCAO` VARCHAR(3) NOT NULL,
+      PRIMARY KEY (`CODIGO_ACAO`, `PROGRAMA_CODIGO_PROGRAMA`),
+      CONSTRAINT `fk_ACAO_PROGRAMA1`
+        FOREIGN KEY (`PROGRAMA_CODIGO_PROGRAMA`)
+        REFERENCES `PROGRAMA` (`CODIGO_PROGRAMA`)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION,
+      CONSTRAINT `fk_ACAO_SUBFUNCAO1`
+        FOREIGN KEY (`SUBFUNCAO_CODIGO_SUBFUNCAO`)
+        REFERENCES `SUBFUNCAO` (`CODIGO_SUBFUNCAO`)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION);
+
+
+    CREATE UNIQUE INDEX `siafi_UNIQUE` ON `MUNICIPIO` (`CODIGO_SIAFI_MUNICIPIO` ASC);
+
+    CREATE UNIQUE INDEX `NIS_FAVORECIDO_UNIQUE` ON `FAVORECIDO` (`NIS_FAVORECIDO` ASC);
+
+    CREATE INDEX `fk_FAVORECIDO_MUNICIPIO_idx` ON `FAVORECIDO` (`MUNICIPIO_CODIGO_SIAFI_MUNICIPIO` ASC);
+
+    CREATE INDEX `fk_PROGRAMA_has_FAVORECIDO_FAVORECIDO1_idx` ON `PAGAMENTO` (`FAVORECIDO_NIS_FAVORECIDO` ASC);
+
+    CREATE INDEX `fk_PROGRAMA_has_FAVORECIDO_PROGRAMA1_idx` ON `PAGAMENTO` (`PROGRAMA_CODIGO_PROGRAMA` ASC);
+
+    CREATE INDEX `fk_ACAO_PROGRAMA1_idx` ON `ACAO` (`PROGRAMA_CODIGO_PROGRAMA` ASC);
+
+    CREATE INDEX `fk_ACAO_SUBFUNCAO1_idx` ON `ACAO` (`SUBFUNCAO_CODIGO_SUBFUNCAO` ASC);
+
+    CREATE INDEX `fk_SUBFUNCAO_FUNCAO1_idx` ON `SUBFUNCAO` (`FUNCAO_CODIGO_FUNCAO` ASC);
+""")
+
+print("CRIAÇÃO DAS TABELAS NORMALIZADAS...COMPLETO")
+
+print("POPULANDO A TABELA FUNCAO...")
+
+cur.execute("""
+    insert into FUNCAO (CODIGO_FUNCAO, NOME_FUNCAO)
+        select distinct fsf.CODIGO_FUNCAO, fsf.NOME_FUNCAO
+        from FUNCAO_SUBFUNCAO as fsf
+        where fsf.CODIGO_FUNCAO is not null;
+""")
+
+print("POPULANDO A TABELA FUNCAO...COMPLETO")
+
+print("POPULANDO A TABELA SUBFUNCAO...")
+
+cur.execute("""
+    insert into SUBFUNCAO (CODIGO_SUBFUNCAO, NOME_SUBFUNCAO, FUNCAO_CODIGO_FUNCAO)
+        select fsf.CODIGO_SUBFUNCAO, fsf.NOME_SUBFUNCAO, fsf.CODIGO_FUNCAO
+        from FUNCAO_SUBFUNCAO as fsf
+        where fsf.CODIGO_SUBFUNCAO is not null
+        and fsf.CODIGO_FUNCAO is not null;
+""")
+
+print("POPULANDO A TABELA SUBFUNCAO...COMPLETO")
+
+print("POPULANDO A TABELA MUNICIPIO...")
+
+cur.execute("""
+    insert into MUNICIPIO (CODIGO_SIAFI_MUNICIPIO, NOME_MUNICIPIO, UF)
+        select distinct bf.CODIGO_SIAFI_MUNICIPIO, bf.NOME_MUNICIPIO, bf.UF
+        from BOLSA_FAMILIA as bf
+        where bf.CODIGO_SIAFI_MUNICIPIO is not null;
+""")
+
+print("POPULANDO A TABELA MUNICIPIO...COMPLETO")
+
+print("POPULANDO A TABELA PROGRAMA...")
+
+cur.execute("""
+    insert into PROGRAMA (CODIGO_PROGRAMA, NOME_PROGRAMA) values
+        ("1335", "Transferência de Renda com Condicionalidades");
+""")
+
+print("POPULANDO A TABELA PROGRAMA...COMPLETO")
+
+print("POPULANDO A TABELA ACAO...")
+
+cur.execute("""
+    insert into ACAO (CODIGO_ACAO, NOME_ACAO, FONTE_FINALIDADE, PROGRAMA_CODIGO_PROGRAMA, SUBFUNCAO_CODIGO_SUBFUNCAO) values
+        ("8442", "Transferência de Renda Diretamente às Famílias em Condição de Pobreza e Extrema Pobreza", "CAIXA - Programa Bolsa Família", "1335", "244");
+""")
+
+print("POPULANDO A TABELA ACAO...COMPLETO")
+
+print("POPULANDO A TABELA FAVORECIDO...")
+
+cur.execute("""
+    insert into FAVORECIDO (NIS_FAVORECIDO, NOME_FAVORECIDO, MUNICIPIO_CODIGO_SIAFI_MUNICIPIO)
+        select distinct bf.NIS_FAVORECIDO, bf.NOME_FAVORECIDO, bf.CODIGO_SIAFI_MUNICIPIO
+        from BOLSA_FAMILIA as bf
+        where bf.NIS_FAVORECIDO is not null
+        and bf.CODIGO_SIAFI_MUNICIPIO is not null;
+""")
+
+print("POPULANDO A TABELA FAVORECIDO...COMPLETO")
+
+print("POPULANDO A TABELA PAGAMENTO...")
+
+cur.execute("""
+    insert into PAGAMENTO (PROGRAMA_CODIGO_PROGRAMA, FAVORECIDO_NIS_FAVORECIDO, MES_COMPETENCIA, VALOR_PARCELA)
+        select bf.CODIGO_PROGRAMA, bf.NIS_FAVORECIDO, bf.MES_COMPETENCIA, bf.VALOR_PARCELA
+        from BOLSA_FAMILIA as bf
+        where bf.CODIGO_PROGRAMA is not null,
+        and bf.NIS_FAVORECIDO is not null,
+        and bf.MES_COMPETENCIA is not null;
+""")
+
+print("POPULANDO A TABELA PAGAMENTO...COMPLETO")
+
+print("TODAS TABELAS NORMALIZADAS FORAM CRIADAS E POPULADAS COM SUCESSO!!")
+
+conn.close()

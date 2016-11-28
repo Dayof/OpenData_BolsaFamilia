@@ -126,7 +126,7 @@ $ deactivate
 
 ### Relatório
 
-Na pasta [doc](doc) contém o relatório do projeto com o passo a passo de desenvolvimento, desde a análise de cada campo nas tabelas até o desenvolvimento da GUI.
+Na pasta [doc](doc) contém o relatório do projeto com o passo a passo de desenvolvimento, desde a análise de cada campo nas tabelas até o desenvolvimento da camada de apresentação dos dados.
 
 ### Motivação
 
