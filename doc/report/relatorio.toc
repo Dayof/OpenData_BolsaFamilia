@@ -2,21 +2,26 @@
 \select@language {american}
 \select@language {brazil}
 \contentsline {section}{\numberline {1}Introdu\IeC {\c c}\IeC {\~a}o}{3}{section.1}
-\contentsline {section}{\numberline {2}Diagrama de Entidade Relacionamento (DER)}{3}{section.2}
-\contentsline {subsection}{\numberline {2.1}Caracter\IeC {\'\i }sticas dos atributos do DER}{3}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}Entidades do DER}{5}{subsection.2.2}
-\contentsline {subsection}{\numberline {2.3}Rela\IeC {\c c}\IeC {\~o}es do DER}{5}{subsection.2.3}
-\contentsline {section}{\numberline {3}Modelo Relacional (MR)}{6}{section.3}
-\contentsline {section}{\numberline {4}Formas Normais}{7}{section.4}
-\contentsline {subsection}{\numberline {4.1}1FN}{7}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}2FN}{7}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}3FN}{8}{subsection.4.3}
-\contentsline {section}{\numberline {5}Extract, Transform, Load (ETL)}{8}{section.5}
-\contentsline {subsection}{\numberline {5.1}Extract}{9}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}Transform}{9}{subsection.5.2}
-\contentsline {subsection}{\numberline {5.3}Load}{9}{subsection.5.3}
-\contentsline {section}{\numberline {6}Camadas do Sistema para o CRUD}{10}{section.6}
-\contentsline {subsection}{\numberline {6.1}Persist\IeC {\^e}ncia}{10}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}Apresenta\IeC {\c c}\IeC {\~a}o}{10}{subsection.6.2}
-\contentsline {section}{\numberline {7}Consultas}{10}{section.7}
-\contentsline {section}{\numberline {8}An\IeC {\'a}lise dos Resultados e Considera\IeC {\c c}\IeC {\~o}es Finais}{10}{section.8}
+\contentsline {subsection}{\numberline {1.1}Motiva\IeC {\c c}\IeC {\~a}o}{3}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Programa Social - Bolsa Fam\IeC {\'\i }lia}{3}{subsection.1.2}
+\contentsline {subsubsection}{\numberline {1.2.1}Sobre o Programa}{3}{subsubsection.1.2.1}
+\contentsline {subsubsection}{\numberline {1.2.2}Volume de recursos envolvidos}{4}{subsubsection.1.2.2}
+\contentsline {subsection}{\numberline {1.3}O Projeto}{5}{subsection.1.3}
+\contentsline {section}{\numberline {2}Diagrama de Entidade Relacionamento (DER)}{5}{section.2}
+\contentsline {subsection}{\numberline {2.1}Caracter\IeC {\'\i }sticas dos atributos do DER}{6}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Entidades do DER}{7}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Rela\IeC {\c c}\IeC {\~o}es do DER}{8}{subsection.2.3}
+\contentsline {section}{\numberline {3}Modelo Relacional (MR)}{9}{section.3}
+\contentsline {section}{\numberline {4}Formas Normais}{9}{section.4}
+\contentsline {subsection}{\numberline {4.1}1FN}{10}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}2FN}{10}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}3FN}{10}{subsection.4.3}
+\contentsline {section}{\numberline {5}Extract, Transform, Load (ETL)}{11}{section.5}
+\contentsline {subsection}{\numberline {5.1}Extract}{11}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Transform}{12}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Load}{12}{subsection.5.3}
+\contentsline {section}{\numberline {6}Camadas do Sistema para o CRUD}{12}{section.6}
+\contentsline {subsection}{\numberline {6.1}Persist\IeC {\^e}ncia}{13}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Apresenta\IeC {\c c}\IeC {\~a}o}{13}{subsection.6.2}
+\contentsline {section}{\numberline {7}Consultas}{13}{section.7}
+\contentsline {section}{\numberline {8}An\IeC {\'a}lise dos Resultados e Considera\IeC {\c c}\IeC {\~o}es Finais}{13}{section.8}
