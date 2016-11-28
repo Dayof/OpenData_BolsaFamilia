@@ -19,4 +19,4 @@
 \contentsline {subsection}{\numberline {6.1}Persist\IeC {\^e}ncia}{10}{subsection.6.1}
 \contentsline {subsection}{\numberline {6.2}Apresenta\IeC {\c c}\IeC {\~a}o}{10}{subsection.6.2}
 \contentsline {section}{\numberline {7}Consultas}{10}{section.7}
-\contentsline {section}{\numberline {8}An\IeC {\'a}lise dos Resultados}{10}{section.8}
+\contentsline {section}{\numberline {8}An\IeC {\'a}lise dos Resultados e Considera\IeC {\c c}\IeC {\~o}es Finais}{10}{section.8}

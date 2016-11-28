@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.10)  28 NOV 2016 07:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.10)  28 NOV 2016 07:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1141,8 +1141,18 @@ Package babel Info: Redefining portuges shorthand "|
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 268.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 271.
- (./relatorio.bbl
+(babel)             in language  on input line 279.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 289.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 289.
+ [10]
+Underfull \hbox (badness 1097) in paragraph at lines 291--292
+\OT1/ptm/m/n/12 o de-sen-vol-vi-mento deste pro-jeto: []$\OT1/pcr/m/n/12 https 
+: / / github . com / Dayof / OpenData _
+ []
+
+(./relatorio.bbl
 Underfull \hbox (badness 4673) in paragraph at lines 4--9
 []\OT1/ptm/m/n/12 CaixaGov.  Caixa - pro-gra-mas so-ci-ais - bolsa fam[]^^Plia.
   []$\OT1/pcr/m/n/12 http :
@@ -1159,29 +1169,25 @@ Underfull \hbox (badness 3098) in paragraph at lines 23--27
 []\OT1/ptm/m/n/12 MySQLWorkbench (2016).  Mysql work-bench, soft-ware
  []
 
+)
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 34.
+(babel)             in language  on input line 298.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 34.
-[10])
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 279.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 279.
+(babel)             in language  on input line 298.
  [11]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 279.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 279.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 298.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 298.
  (./relatorio.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 279.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 279.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 298.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 298.
 Package rerunfilecheck Info: File `relatorio.out' has not changed.
-(rerunfilecheck)             Checksum: ED5C1960E6C4C473AD936A5E179E412E;1160.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 279.
+(rerunfilecheck)             Checksum: 3B8654E2CB571F3CD708DCD7586131BD;1189.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 298.
  ) 
 Here is how much of TeX's memory you used:
  18669 strings out of 493089
  340516 string characters out of 6134841
- 420879 words of memory out of 5000000
+ 420904 words of memory out of 5000000
  21744 multiletter control sequences out of 15000+600000
  23133 words of font info for 48 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1195,10 +1201,10 @@ ist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/
 type1/urw/times/utmbi8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw
 /times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utm
 ri8a.pfb>
-Output written on relatorio.pdf (11 pages, 231660 bytes).
+Output written on relatorio.pdf (11 pages, 233081 bytes).
 PDF statistics:
- 241 PDF objects out of 1000 (max. 8388607)
- 215 compressed objects within 3 object streams
+ 243 PDF objects out of 1000 (max. 8388607)
+ 217 compressed objects within 3 object streams
  44 named destinations out of 1000 (max. 500000)
  175 words of extra memory for PDF output out of 10000 (max. 10000000)
 
