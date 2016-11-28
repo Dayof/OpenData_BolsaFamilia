@@ -18,14 +18,12 @@ LEFT JOIN favorecido ON codigo_siafi_municipio = municipio_codigo_siafi_municipi
 JOIN pagamento ON nis_favorecido = favorecido_nis_favorecido
 GROUP BY Estado;
 
-
 -- Total de favorecidos por estado
 SELECT uf, COUNT(municipio_codigo_siafi_municipio) AS "Total favorecidos"
 FROM municipio
 LEFT JOIN favorecido ON codigo_siafi_municipio = municipio_codigo_siafi_municipio
 GROUP BY uf
 ORDER BY "Total favorecidos";
-
 
 -- Media de pagamentos
 SELECT AVG(valor_parcela) AS "Media de pagamento"
