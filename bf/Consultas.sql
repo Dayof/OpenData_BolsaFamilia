@@ -11,10 +11,22 @@ JOIN pagamento ON nis = favorecido_nis_favorecido
 ORDER BY valor_parcela DESC;
 
 -- Ordena os estados em ordem maior beneficiado pelo programa bolsa familia
+CREATE VIEW uf_mais_favorecidos AS
 SELECT uf AS Estado, SUM(valor_parcela) AS Total
 FROM municipio
-LEFT JOIN favorecido ON nome_municipio = municipio_nome_municipio
+LEFT JOIN favorecido ON codigo_siafi_municipio = municipio_codigo_siafi_municipio
 JOIN pagamento ON nis_favorecido = favorecido_nis_favorecido
 GROUP BY Estado;
 
 
+-- Total de favorecidos por estado
+SELECT uf, COUNT(municipio_codigo_siafi_municipio) AS "Total favorecidos"
+FROM municipio
+LEFT JOIN favorecido ON codigo_siafi_municipio = municipio_codigo_siafi_municipio
+GROUP BY uf
+ORDER BY "Total favorecidos";
+
+
+-- Media de pagamentos
+SELECT AVG(valor_parcela) AS "Media de pagamento"
+FROM pagamento;
