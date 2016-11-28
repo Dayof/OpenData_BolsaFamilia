@@ -67,6 +67,30 @@ def highPayState():
     entries = cur.fetchall()
     return render_template('paystate.html', entries=entries)
 
+@app.route('/allfavbystate')
+def allFavByState():
+    db = getDB()
+    cur = db.execute("""
+        SELECT uf, COUNT(municipio_codigo_siafi_municipio)
+        AS "Total favorecidos"
+        FROM municipio
+        LEFT JOIN favorecido ON codigo_siafi_municipio = municipio_codigo_siafi_municipio
+        GROUP BY uf
+        ORDER BY "Total favorecidos";
+    """)
+    entries = cur.fetchall()
+    return render_template('allfavbystate.html', entries=entries)
+
+@app.route('/medvalor')
+def medValor():
+    db = getDB()
+    cur = db.execute("""
+        SELECT AVG(valor_parcela) AS "Media de pagamento"
+        FROM pagamento;
+    """)
+    entries = cur.fetchall()
+    return render_template('medvalor.html', entries=entries)
+
 @app.route('/addpag', methods=['POST'])
 def addPag():
     db = getDB()
