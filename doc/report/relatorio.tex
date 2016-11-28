@@ -54,6 +54,61 @@
 	\section{Introdução}
 	\label{sec:intro}
 	
+	\subsection{Motivação}
+	\label{sec:motiv}
+	
+	Este relatório se deve ao Projeto de Banco de Dados da disciplina de Banco de Dados da Universidade de Brasília (UnB), referente ao segundo semestre de 2016, turma A. Esse projeto consiste em montar um Banco de Dados com os dados do governo do programa Bolsa Família - setembro de 2015, segundo disponível no site \url{http://www.portaltransparencia.gov.br/}.
+	
+	Este relatório abrange o que é o programa social Bolsa Família e todo um passo-a-passo de criação de um banco de dados, partindo de um arquivo maciço CSV \emph{(Comma-Separated Values)} usando as mais variadas ferramentas (para verificar as ferramentas, visite o item \ref{sec:notes} e confira o \emph{README} do projeto).
+	
+	\subsection{Programa Social - Bolsa Família}
+	\label{sec:psbf}
+	
+	\subsubsection{Sobre o Programa}
+	\label{sec:bfsobre}
+	
+	O Programa Bolsa Família - PBF é um programa de transferência de renda do Governo Federal, sob condicionalidades, instituído no Governo Lula pela Medida Provisória 132, de 20 de outubro de 2003, convertida em lei em 9 de janeiro de 2004, pela Lei Federal n. 10.836.
+	
+	Tendo sido apelidado de \emph{Programa 1335 – Transferência de Renda com Condicionalidades – Bolsa Família}, foram geradas ações de controle com o fito de avaliar a efetiva aplicação dos recursos destinados ao cumprimento da finalidade constante da \emph{Ação 8442 – Transferência de Renda Diretamente às Famílias em Condições de Pobreza e Extrema Pobreza}, pertencente ao \emph{Programa Bolsa Família - PBF}.
+	
+	O objetivo do programa \emph{1335 – Transferência de Renda com Condicionalidades – Bolsa Família} é Combater a fome, a pobreza e outras formas de privação das famílias e promover a segurança alimentar e nutricional e o acesso à rede de serviços públicos de saúde, educação e assistência social, criando possibilidades de emancipação sustentada dos grupos familiares e de desenvolvimento local dos territórios.
+	
+	O objetivo da ação \emph{8442 – Transferência de Renda Diretamente às Famílias em Condições de Pobreza e Extrema Pobreza} é Melhorar as condições socioeconômicas das famílias pobres e extremamente pobres por meio de transferência direta de renda.
+	
+	A gestão do PBF é descentralizada e compartilhada por União, estados, Distrito Federal e municípios. Estes entes federados trabalham em conjunto para aperfeiçoar, ampliar e fiscalizar a execução do Programa, instituído pela Lei 10.836/04 e regulamentado pelo Decreto nº 5.209/04.
+	
+	As famílias beneficiárias são selecionadas com base nas informações inseridas pelo município no Cadastro Único para Programas Sociais (Cadastro Único). O Cadastro é um instrumento de coleta de dados que tem como objetivo identificar todas as famílias de baixa renda existentes no País. A seleção dos beneficiários é realizada de forma automatizada, utilizando-se como principal critério a renda per capita da família.
+	
+	Os Órgãos Federais envolvidos na execução do Programa são: a SECRETARIA NACIONAL DE RENDA DE CIDADANIA DO MINISTÉRIO DO DESENVOLVIMENTO SOCIAL E COMBATE À FOME - SENARC/MDS (UG: 550007), responsável pela coordenação, gestão e operacionalização do Programa Bolsa Família; a CAIXA ECONÔMICA FEDERAL (CAIXA), com a função de Agente Operador do PBF, mediante remuneração e condições pactuadas no contrato com o MDS; o MINISTÉRIO DA SAÚDE – MS, por meio da Secretaria de Atenção a Saúde (UG 250010), responsável pela gestão federal do acompanhamento do cumprimento das condicionalidades de saúde das famílias beneficiárias do PBF; o MINISTÉRIO DA EDUCAÇÃO - MEC, por meio da Secretaria de Educação Continuada, Alfabetização e Diversidade (UG: 150028), responsável pela gestão federal do sistema de frequência escolar dos alunos; e a SECRETARIA NACIONAL DE ASSISTÊNCIA SOCIAL DO MINISTÉRIO DO DESENVOLVIMENTO SOCIAL E COMBATE À FOME – SNAS/MDS (UG 550011), responsável em realizar a coleta e o registro periódico das informações referentes à condicionalidade da assistência social.
+	
+	Os demais órgãos responsáveis, governos estaduais com a função de apoiar os municípios na implementação do Programa; governos municipais e Distrito Federal, responsáveis pela gestão local do Programa Bolsa Família e do Cadastro Único; e Órgãos de Controle Social, responsáveis por garantir aos cidadãos espaço para o acompanhamento do Programa, atuam visando assegurar os interesses da sociedade, bem como permitir que suas demandas e necessidades sejam apresentadas ao poder público.
+	
+	\subsubsection{Volume de recursos envolvidos}
+	\label{sec:vre}
+	
+	Os volumes de recursos orçamentários destinados à Ação 8442 - Transferência de Renda Diretamente às Famílias em Condição de Pobreza e Extrema Pobreza (Lei nº 10.836/2004) para os exercícios entre 2007 a 2012 estão a seguir representados:
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{vre_07-12.png}
+		\caption{Quantidade de recursos envolvidos investido no PBF nos anos de 2007 a 2012.}
+		\label{fig:vre_07-12}
+	\end{figure}
+	
+	Podemos ver também, com dados mais atualizados, a correção monetária sobre os investimentos do PBF, e que, embora crescente, vem tendo um ritmo desacelerado, devido à crise financeira que vem assolando o Brasil nos últimos tempos. Segue então um infográfico simples que revela o investimento no PBF e as variações nominal e real nos anos de 2010 a 2016:
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=1\textwidth]{inf_10_16.png}
+		\caption{Infográfico representando o investimento em bilhões de reais e as variações nominal e corrigida sobre o PBF nos anos de 2010 a 2016.}
+		\label{fig:inf_10_16}
+	\end{figure}
+	
+	Os dados referentes à setembro de 2015 serão abordados posteriormente junto ao desenvolvimento do banco.
+	
+	\subsection{Notas}
+	\label{sec:notes}
+	
 	Todos os algoritmos, scripts e imagens comentadas neste relatório podem ser encontrados no repositório aberto do GitHub criado para o desenvolvimento deste projeto: \url{https://github.com/Dayof/OpenData_BolsaFamilia}. 
 	
 	\section{Diagrama de Entidade Relacionamento (DER)}
