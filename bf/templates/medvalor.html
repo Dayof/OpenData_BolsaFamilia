@@ -1,0 +1,10 @@
+{% extends "home.html" %}
+{% block body %}
+    {% for entry in entries %}
+        <li>
+            <h2>{{ entry.Media de pagamento|safe }}</h2>
+        </li>
+    {% else %}
+        <li><em>Unbelievable. No entries here so far</em></li>
+    {% endfor %}
+{% endblock %}
