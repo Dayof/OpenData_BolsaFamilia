@@ -1,19 +1,22 @@
 \BOOKMARK [1][-]{section.1}{Introdu\347\343o}{}% 1
-\BOOKMARK [1][-]{section.2}{DER}{}% 2
-\BOOKMARK [1][-]{section.3}{MR}{}% 3
-\BOOKMARK [1][-]{section.4}{Formas Normais}{}% 4
-\BOOKMARK [2][-]{subsection.4.1}{1F}{section.4}% 5
-\BOOKMARK [2][-]{subsection.4.2}{2F}{section.4}% 6
-\BOOKMARK [2][-]{subsection.4.3}{3F}{section.4}% 7
-\BOOKMARK [1][-]{section.5}{Script geral}{}% 8
-\BOOKMARK [1][-]{section.6}{ETL}{}% 9
-\BOOKMARK [1][-]{section.7}{Camadas}{}% 10
-\BOOKMARK [2][-]{subsection.7.1}{Persist\352ncia}{section.7}% 11
-\BOOKMARK [2][-]{subsection.7.2}{GUI}{section.7}% 12
-\BOOKMARK [1][-]{section.8}{Consultas}{}% 13
-\BOOKMARK [1][-]{section.9}{Views}{}% 14
-\BOOKMARK [1][-]{section.10}{Procedure}{}% 15
-\BOOKMARK [1][-]{section.11}{Trigger}{}% 16
-\BOOKMARK [1][-]{section.12}{Solu\347\343o das Perguntas}{}% 17
-\BOOKMARK [1][-]{section.13}{An\341lise dos Resultados}{}% 18
-\BOOKMARK [1][-]{section.14}{Conclus\343o}{}% 19
+\BOOKMARK [1][-]{section.2}{Diagrama de Entidade Relacionamento \(DER\)}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Caracter\355sticas dos atributos do DER}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Entidades do DER}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Rela\347\365es do DER}{section.2}% 5
+\BOOKMARK [1][-]{section.3}{Modelo Relacional \(MR\)}{}% 6
+\BOOKMARK [1][-]{section.4}{Formas Normais}{}% 7
+\BOOKMARK [2][-]{subsection.4.1}{1F}{section.4}% 8
+\BOOKMARK [2][-]{subsection.4.2}{2F}{section.4}% 9
+\BOOKMARK [2][-]{subsection.4.3}{3F}{section.4}% 10
+\BOOKMARK [1][-]{section.5}{Script geral}{}% 11
+\BOOKMARK [1][-]{section.6}{ETL}{}% 12
+\BOOKMARK [1][-]{section.7}{Camadas}{}% 13
+\BOOKMARK [2][-]{subsection.7.1}{Persist\352ncia}{section.7}% 14
+\BOOKMARK [2][-]{subsection.7.2}{GUI}{section.7}% 15
+\BOOKMARK [1][-]{section.8}{Consultas}{}% 16
+\BOOKMARK [1][-]{section.9}{Views}{}% 17
+\BOOKMARK [1][-]{section.10}{Procedure}{}% 18
+\BOOKMARK [1][-]{section.11}{Trigger}{}% 19
+\BOOKMARK [1][-]{section.12}{Solu\347\343o das Perguntas}{}% 20
+\BOOKMARK [1][-]{section.13}{An\341lise dos Resultados}{}% 21
+\BOOKMARK [1][-]{section.14}{Conclus\343o}{}% 22
