@@ -72,11 +72,12 @@ def allFavByState():
     db = getDB()
     cur = db.execute("""
         SELECT uf, COUNT(municipio_codigo_siafi_municipio)
-        AS "Total favorecidos"
+        AS tot_fav
         FROM municipio
-        LEFT JOIN favorecido ON codigo_siafi_municipio = municipio_codigo_siafi_municipio
+        LEFT JOIN favorecido
+        ON codigo_siafi_municipio = municipio_codigo_siafi_municipio
         GROUP BY uf
-        ORDER BY "Total favorecidos";
+        ORDER BY tot_fav;
     """)
     entries = cur.fetchall()
     return render_template('allfavbystate.html', entries=entries)
@@ -85,11 +86,27 @@ def allFavByState():
 def medValor():
     db = getDB()
     cur = db.execute("""
-        SELECT AVG(valor_parcela) AS "Media de pagamento"
+        SELECT AVG(valor_parcela) AS med_pag
         FROM pagamento;
     """)
     entries = cur.fetchall()
     return render_template('medvalor.html', entries=entries)
+
+@app.route('/medvalorbystate')
+def medValorEstado():
+    db = getDB()
+    cur = db.execute("""
+        SELECT uf, AVG(valor_parcela) AS med_pag_by_state
+        FROM municipio
+        LEFT JOIN favorecido
+        ON codigo_siafi_municipio = municipio_codigo_siafi_municipio
+        LEFT JOIN pagamento
+        ON nis_favorecido = favorecido_nis_favorecido
+        GROUP BY uf
+        ORDER BY med_pag_by_state;
+    """)
+    entries = cur.fetchall()
+    return render_template('medvalorbystate.html', entries=entries)
 
 @app.route('/addpag', methods=['POST'])
 def addPag():
