@@ -55,7 +55,8 @@ def highPay():
 def highPayState():
     db = getDB()
     cur = db.execute("""
-        CREATE VIEW uf_mais_favorecidos AS
+        CREATE PROCEDURE uf_mais_favorecidos AS
+        BEGIN
         SELECT uf AS Estado,
         SUM(valor_parcela) AS Total
         FROM municipio
@@ -63,7 +64,8 @@ def highPayState():
         ON CODIGO_SIAFI_MUNICIPIO = MUNICIPIO_CODIGO_SIAFI_MUNICIPIO
         JOIN pagamento
         ON nis_favorecido = favorecido_nis_favorecido
-        GROUP BY Estado;
+        GROUP BY Estado
+        END;
     """)
     entries = cur.fetchall()
     return render_template('paystate.html', entries=entries)
