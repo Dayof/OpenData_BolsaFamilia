@@ -28,3 +28,12 @@ ORDER BY "Total favorecidos";
 -- Media de pagamentos
 SELECT AVG(valor_parcela) AS "Media de pagamento"
 FROM pagamento;
+
+-- Media de pagamentos por estado
+SELECT uf, AVG(valor_parcela) AS "Media por estado"
+FROM municipio
+LEFT JOIN favorecido ON codigo_siafi_municipio = municipio_codigo_siafi_municipio
+LEFT JOIN pagamento ON nis_favorecido = favorecido_nis_favorecido
+GROUP BY uf
+ORDER BY "Media por estado";
+
