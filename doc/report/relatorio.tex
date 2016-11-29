@@ -346,7 +346,9 @@
 		R: 
 	\end{itemize}
 	
-	Também foi descoberto que existe mais de um pagamento direcionado a um mesmo favorecido, do mesmo programa no mesmo mês/ano. 
+	Também foi descoberto que existe mais de um pagamento direcionado a um mesmo favorecido, do mesmo programa no mesmo mês/ano. Além disso, nesse período de setembro de 2015, foram registradas 13 912 767 entradas de pagamento, deixando o processamento realmente lento. E, para dificultar o processo, para cada FK o SGBD conferia se existia tal chave nas outras tabelas, o que deixou o processo de criação dessa tabela exponencialmente lento.
+	
+	Portanto, foi decidido que a tabela de pagamentos teria um campo extra chamado \emph{cod{\_}pag}, sendo ele de \emph{auto{\_}increment}. Essa alteração, entretanto, acarretou em mudanças no BD, já que a entidade \emph{Pagamento} deixa de ser entidade fraca, e as relações entre \emph{Favorecido} e \emph{Programa} deixam de ser de identificação.
 	
 	Todo o sistema e scripts de ETL estão no repositório aberto do GitHub criado para o desenvolvimento deste projeto: \url{https://github.com/Dayof/OpenData_BolsaFamilia}. As bases de dados de formato CSV e DB não estão neste repositório remoto devido à extensão destes.
 	
