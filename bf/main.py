@@ -39,16 +39,11 @@ def allFav():
 def highPay():
     db = getDB()
     cur = db.execute("""
-        CREATE VIEW mais_favorecidos
-        AS SELECT nis_favorecido AS NIS,
-        nome_favorecido AS Nome,
-        valor_parcela, mes_competencia
-        FROM favorecido f
-        JOIN pagamento
-        ON nis = favorecido_nis_favorecido
-        ORDER BY valor_parcela DESC;
+        SELECT *
+        FROM MAIS_FAVORECIDOS;
     """)
     entries = cur.fetchall()
+    print(entries)
     return render_template('pay.html', entries=entries)
 
 @app.route('/paystate')
@@ -148,7 +143,7 @@ def editPag():
         set VALOR_PARCELA = ?
         where PROGRAMA_CODIGO_PROGRAMA = ?
         and FAVORECIDO_NIS_FAVORECIDO = ?
-        and MES_COMPETENCIA = ?
+        and MES_COMPETENCIA = ?;
     """, (request.form['new_valor'], request.form['cod_programa'], request.form['nis_fav'], request.form['mes']))
 
     db.commit()
