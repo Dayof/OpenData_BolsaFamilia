@@ -1,4 +1,4 @@
--- TRANSACTION para inserir view de consulta dos favorecidos que ganham mais do PBF
+-- TRANSACTION para inserir view de consulta que ordena os favorecidos em ordem de maior pagamento na base de dados
 BEGIN TRANSACTION;
 
 DROP VIEW MAIS_FAVORECIDOS;
@@ -8,10 +8,15 @@ AS
 SELECT
     f.nis_favorecido as nis,
     f.nome_favorecido as nome,
-    p.valor_parcela as valor,
+    sum(p.valor_parcela) as total,
     p.mes_competencia as mes
-FROM FAVORECIDO f
-JOIN PAGAMENTO p ON nis=p.favorecido_nis_favorecido
+FROM
+    FAVORECIDO f
+INNER JOIN PAGAMENTO p ON nis=p.nis_favorecido
+GROUP BY
+    nis,
+    nome,
+    mes
 ORDER BY p.valor_parcela DESC;
 
 COMMIT;
