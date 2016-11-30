@@ -18,8 +18,8 @@
             {% block body %}
                 {% for entry in entries %}
                     <li>
-                        <h2>{{ entry.FAVORECIDO_NIS_FAVORECIDO }}</h2>
-                        {{  entry.MES_COMPETENCIA }} - {{  entry.VALOR_PARCELA|safe }}
+                        <h2>{{ entry.nis }} - {{ entry.nome|safe }}</h2>
+                        {{  entry.mes }} - {{  entry.valor|safe }}
                     </li>
                 {% else %}
                     <li><em>Unbelievable. No entries here so far</em></li>

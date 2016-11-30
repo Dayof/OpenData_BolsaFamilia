@@ -2,7 +2,7 @@
 {% block body %}
     {% for entry in entries %}
         <li>
-            <h2>{{ entry.uf|safe }} - {{ entry.tot_fav|safe }}</h2>
+            <h2>{{ entry.estado|safe }} - {{ entry.total_fav|safe }}</h2>
         </li>
     {% else %}
         <li><em>Unbelievable. No entries here so far</em></li>
