@@ -1,6 +1,6 @@
 #!bin/bash
 DIR_BF=bf
-BF_DB="DIR_BF/bf.db"
+BF_DB="DIR_BF/all.db"
 
 error()
 {
@@ -11,12 +11,15 @@ error()
 echo "Pré-processamento das tabelas iniciado..."
 bash pre_import.sh || error
 
-if [ -f "$BF_DB" ]; then
+if [ -f "$BF_DB" ]
+then
     echo "Database do bolsa família e funções já foram processados!"
 else
     echo "Processando database da bolsa família e das funções..."
     python3 import_bf_csv.py || error
 	echo "Populando database das tabelas normalizadas..."
     python3 pop.py || error
-	mv bf.db bf/
+	mv all.db bf/ || error
+	cd "$DIR_BF" || error
+	sqlite3 all.db < views.sql || error
 fi
