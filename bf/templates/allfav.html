@@ -1,0 +1,11 @@
+{% extends "home.html" %}
+{% block body %}
+    <h1>Todos os favorecidos em ordem alfabética</h1>
+    {% for entry in entries %}
+        <li>
+            <h2>{{ entry.nome|safe }} - {{  entry.nis }}</h2>
+        </li>
+    {% else %}
+        <li><em>Unbelievable. No entries here so far</em></li>
+    {% endfor %}
+{% endblock %}

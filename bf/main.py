@@ -49,18 +49,48 @@ def getDB():
 def index():
     db = getDB()
     # db.create_function("search", 1, _searchFav)
-    cur = db.execute("""
-            SELECT
-                NIS_FAVORECIDO AS nis,
-                MES_COMPETENCIA as mes,
-                VALOR_PARCELA as valor
-            FROM
-                PAGAMENTO;
-        """)
-    entries = cur.fetchall()
-    return render_template('home.html', entries=entries)
+    return render_template('home.html')
 
 @app.route('/all')
+def all():
+    return render_template('all.html')
+
+@app.route('/searchfav', methods=['POST'])
+def searchFav():
+    db = getDB()
+
+    cur = db.execute("""
+        SELECT
+            NOME_FAVORECIDO AS nome,
+            NIS_FAVORECIDO AS nis,
+            CODIGO_SIAFI_MUNICIPIO AS siafi
+        FROM
+            FAVORECIDO
+        WHERE
+            NIS_FAVORECIDO = ?;
+    """, (request.form['nis_fav'], ))
+
+    entries = cur.fetchall()
+    return render_template('resultsfav.html', entries=entries)
+
+@app.route('/searchfavpag', methods=['POST'])
+def searchFavPag():
+    db = getDB()
+
+    cur = db.execute("""
+        SELECT
+            NIS_FAVORECIDO AS nis,
+            VALOR_PARCELA AS valor
+        FROM
+            PAGAMENTO
+        WHERE
+            NIS_FAVORECIDO = ?;
+    """, (request.form['nis_fav'], ))
+
+    entries = cur.fetchall()
+    return render_template('resultsfavpag.html', entries=entries)
+
+@app.route('/allfav', methods=['GET', 'POST'])
 def allFav():
     db = getDB()
     cur = db.execute("""
@@ -72,7 +102,21 @@ def allFav():
         ORDER BY nome ASC;
     """)
     entries = cur.fetchall()
-    return render_template('all.html', entries=entries)
+    return render_template('allfav.html', entries=entries)
+
+@app.route('/allpav', methods=['GET', 'POST'])
+def allPav():
+    db = getDB()
+    cur = db.execute("""
+            SELECT
+                NIS_FAVORECIDO AS nis,
+                MES_COMPETENCIA as mes,
+                VALOR_PARCELA as valor
+            FROM
+                PAGAMENTO;
+        """)
+    entries = cur.fetchall()
+    return render_template('allpag.html', entries=entries)
 
 @app.route('/pay')
 def highPay():
@@ -176,7 +220,7 @@ def addPag():
 
     flash('Nova entrada de favorecido e pagamento foi adicionada!')
 
-    return redirect(url_for('allFav'))
+    return redirect(url_for('all'))
 
 @app.route('/addfav', methods=['POST'])
 def addFav():
@@ -191,7 +235,7 @@ def addFav():
 
     flash('Nova entrada de favorecido foi adicionada!')
 
-    return redirect(url_for('allFav'))
+    return redirect(url_for('all'))
 
 # TODO - exibir as rows encontradas com os valores inseridos e selecionar qual dado de pagamento editar
 @app.route('/edit', methods=['POST'])
@@ -215,7 +259,7 @@ def editPag():
 
     flash('Valor da parcela de um pagamento foi editada com SUCESSO!!')
 
-    return redirect(url_for('allFav'))
+    return redirect(url_for('all'))
 
 @app.route('/editfav', methods=['POST'])
 def editFav():
@@ -234,7 +278,7 @@ def editFav():
 
     flash('Nome do favorecido editado com SUCESSO!!')
 
-    return redirect(url_for('allFav'))
+    return redirect(url_for('all'))
 
 @app.route('/del', methods=['POST'])
 def delPag():
@@ -255,7 +299,7 @@ def delPag():
 
     flash('Pagamento foi deletado com SUCESSO!!')
 
-    return redirect(url_for('allFav'))
+    return redirect(url_for('all'))
 
 @app.route('/delfav', methods=['POST'])
 def delFav():
@@ -272,7 +316,7 @@ def delFav():
 
     flash('Favorecido foi deletado com SUCESSO!!')
 
-    return redirect(url_for('allFav'))
+    return redirect(url_for('all'))
 
 @app.teardown_appcontext
 def closeDB(error):

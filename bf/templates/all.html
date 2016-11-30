@@ -1,5 +1,6 @@
 {% extends "home.html" %}
 {% block body %}
+    <h1>FORMULÁRIOS DE CRUD</h1>
 
     <h2>Formulário para adicionar um novo favorecido</h2>
 
@@ -86,12 +87,4 @@
             <dd><input type="submit" value="Share">
         </dl>
     </form>
-
-    {% for entry in entries %}
-        <li>
-            <h2>{{ entry.nome|safe }} - {{  entry.nis }}</h2>
-        </li>
-    {% else %}
-        <li><em>Unbelievable. No entries here so far</em></li>
-    {% endfor %}
 {% endblock %}

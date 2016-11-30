@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.10)  28 NOV 2016 15:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.10)  30 NOV 2016 12:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1006,7 +1006,7 @@ Package babel Info: Redefining portuges shorthand "|
 [3]
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 86.
- <vre_07-12.png, id=149, 768.62157pt x 260.47313pt>
+ <vre_07-12.png, id=170, 768.62157pt x 260.47313pt>
 File: vre_07-12.png Graphic file (type png)
  <use vre_07-12.png>
 Package pdftex.def Info: vre_07-12.png used on input line 93.
@@ -1019,7 +1019,7 @@ File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <10> not available
 (Font)              Font shape `OT1/phv/b/n' tried instead on input line 94.
 
-<inf_10_16.png, id=150, 521.95pt x 203.76125pt>
+<inf_10_16.png, id=171, 521.95pt x 203.76125pt>
 File: inf_10_16.png Graphic file (type png)
  <use inf_10_16.png>
 Package pdftex.def Info: inf_10_16.png used on input line 102.
@@ -1039,7 +1039,7 @@ Underfull \hbox (badness 1097) in paragraph at lines 112--113
 
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 114.
-<der.png, id=161, 597.432pt x 444.9423pt>
+<der.png, id=182, 597.432pt x 444.9423pt>
 File: der.png Graphic file (type png)
  <use der.png>
 Package pdftex.def Info: der.png used on input line 121.
@@ -1083,7 +1083,7 @@ Package babel Info: Redefining portuges shorthand "|
  [8]
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 173.
- <eer.png, id=191, 1080.035pt x 543.02875pt>
+ <eer.png, id=211, 1080.035pt x 543.02875pt>
 File: eer.png Graphic file (type png)
 
 <use eer.png>
@@ -1195,9 +1195,21 @@ Package babel Info: Redefining portuges shorthand "|
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 323.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 337.
-
-Underfull \hbox (badness 1097) in paragraph at lines 351--352
+(babel)             in language  on input line 328.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 342.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 347.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 352.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 357.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 361.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 361.
+ [13]
+Underfull \hbox (badness 1097) in paragraph at lines 373--374
 \OT1/ptm/m/n/12 o de-sen-vol-vi-mento deste pro-jeto: []$\OT1/pcr/m/n/12 https 
 : / / github . com / Dayof / OpenData _
  []
@@ -1214,35 +1226,31 @@ Underfull \hbox (badness 10000) in paragraph at lines 4--9
 lia /
  []
 
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 10.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 10.
-[13]
+
 Underfull \hbox (badness 3098) in paragraph at lines 23--27
 []\OT1/ptm/m/n/12 MySQLWorkbench (2016).  Mysql work-bench, soft-ware
  []
 
 )
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 358.
+(babel)             in language  on input line 380.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 358.
+(babel)             in language  on input line 380.
  [14]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 358.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 358.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 380.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 380.
  (./relatorio.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 358.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 358.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 380.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 380.
 Package rerunfilecheck Info: File `relatorio.out' has not changed.
-(rerunfilecheck)             Checksum: 0E0B6A6391DBACAE1F5BD84E19789998;1562.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 358.
+(rerunfilecheck)             Checksum: DFBCF596066E77514784164007F779BF;1792.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 380.
  ) 
 Here is how much of TeX's memory you used:
- 18713 strings out of 493089
- 341152 string characters out of 6134841
- 423429 words of memory out of 5000000
- 21776 multiletter control sequences out of 15000+600000
+ 18726 strings out of 493089
+ 341331 string characters out of 6134841
+ 423583 words of memory out of 5000000
+ 21785 multiletter control sequences out of 15000+600000
  23133 words of font info for 48 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,10n,56p,1161b,458s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1255,10 +1263,10 @@ ist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/
 type1/urw/times/utmbi8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw
 /times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utm
 ri8a.pfb>
-Output written on relatorio.pdf (14 pages, 376840 bytes).
+Output written on relatorio.pdf (14 pages, 379501 bytes).
 PDF statistics:
- 291 PDF objects out of 1000 (max. 8388607)
- 259 compressed objects within 3 object streams
- 54 named destinations out of 1000 (max. 500000)
- 225 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 312 PDF objects out of 1000 (max. 8388607)
+ 280 compressed objects within 3 object streams
+ 58 named destinations out of 1000 (max. 500000)
+ 257 words of extra memory for PDF output out of 10000 (max. 10000000)
 

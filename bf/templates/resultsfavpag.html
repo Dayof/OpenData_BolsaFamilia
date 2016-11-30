@@ -1,0 +1,11 @@
+{% extends "home.html" %}
+{% block body %}
+    <h1>Ordens de pagamento: </h1>
+    {% for entry in entries %}
+        <li>
+            <h2>{{ entry.nis }} -  {{ entry.valor }}</h2>
+        </li>
+    {% else %}
+        <li><em>Ordens de pagamento não encontradas!!</em></li>
+    {% endfor %}
+{% endblock %}

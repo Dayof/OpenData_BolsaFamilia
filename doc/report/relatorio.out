@@ -21,4 +21,8 @@
 \BOOKMARK [2][-]{subsection.6.1}{Persist\352ncia}{section.6}% 21
 \BOOKMARK [2][-]{subsection.6.2}{Apresenta\347\343o}{section.6}% 22
 \BOOKMARK [1][-]{section.7}{Consultas}{}% 23
-\BOOKMARK [1][-]{section.8}{An\341lise dos Resultados e Considera\347\365es Finais}{}% 24
+\BOOKMARK [2][-]{subsection.7.1}{Queries}{section.7}% 24
+\BOOKMARK [2][-]{subsection.7.2}{Views}{section.7}% 25
+\BOOKMARK [2][-]{subsection.7.3}{Procedures}{section.7}% 26
+\BOOKMARK [2][-]{subsection.7.4}{Triggers}{section.7}% 27
+\BOOKMARK [1][-]{section.8}{An\341lise dos Resultados e Considera\347\365es Finais}{}% 28

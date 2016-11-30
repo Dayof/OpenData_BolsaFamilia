@@ -1,0 +1,12 @@
+{% extends "home.html" %}
+{% block body %}
+    <h1>Favorecido encontrado: </h1>
+    {% for entry in entries %}
+        <li>
+            <h2>{{ entry.nome }} -  {{ entry.nis }}</h2>
+            Com siafi : {{ entry.siafi }}
+        </li>
+    {% else %}
+        <li><em>Favorecido não encontrado!!</em></li>
+    {% endfor %}
+{% endblock %}

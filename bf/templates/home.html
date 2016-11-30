@@ -14,17 +14,30 @@
         {% for message in get_flashed_messages() %}
             <div class="flash">{{ message }}</div>
         {% endfor %}
+         <p><a href="{{ url_for('allFav') }}">FAVORECIDOS</a></p>
+         <p><a href="{{ url_for('allPav') }}">PAGAMENTOS</a></p>
+         <p><a href="{{ url_for('all') }}">FORMULÁRIOS</a></p>
+
+        Procurar favorecido:
+         <form action="{{ url_for('searchFav') }}" method="post" class="add-entry">
+             <dl>
+                 <dt>NIS (15 char):
+                 <dd><input type="text" size="30" name="nis_fav">
+                 <dd><input type="submit" value="Share">
+             </dl>
+         </form>
+
+         Procurar ordens de pagamento a um determinado favorecido:
+          <form action="{{ url_for('searchFavPag') }}" method="post" class="add-entry">
+              <dl>
+                  <dt>NIS (15 char):
+                  <dd><input type="text" size="30" name="nis_fav">
+                  <dd><input type="submit" value="Share">
+              </dl>
+          </form>
+
         <ul class="entries">
-            {% block body %}
-                {% for entry in entries %}
-                    <li>
-                        <h2>{{ entry.nis }} </h2>
-                        {{  entry.mes }} - {{  entry.valor|safe }}
-                    </li>
-                {% else %}
-                    <li><em>Unbelievable. No entries here so far</em></li>
-                {% endfor %}
-            {% endblock %}
+            {% block body %} {% endblock %}
         </ul>
     </div>
     <!-- scripts -->
