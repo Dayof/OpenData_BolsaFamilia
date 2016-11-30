@@ -14,9 +14,22 @@
         {% for message in get_flashed_messages() %}
             <div class="flash">{{ message }}</div>
         {% endfor %}
-         <p><a href="{{ url_for('allFav') }}">FAVORECIDOS</a></p>
-         <p><a href="{{ url_for('allPav') }}">PAGAMENTOS</a></p>
-         <p><a href="{{ url_for('all') }}">FORMULÁRIOS</a></p>
+
+         <p>
+             <a href="{{ url_for('allFav') }}">FAVORECIDOS</a> | <a href="{{ url_for('allPav') }}">PAGAMENTOS</a> | <a href="{{ url_for('all') }}">FORMULÁRIOS</a>
+         </p>
+
+         <p> <a href="{{ url_for('allFavByState') }}">FAVORECIDOS POR ESTADO</a> </p>
+
+        <p> <a href="{{ url_for('medValor') }}">VALOR MÉDIO DOS PAGAMENTOS</a> </p>
+
+        <p> <a href="{{ url_for('medValorEstado') }}">VALOR MÉDIO DOS PAGAMENTOS POR ESTADO</a> </p>
+
+        <p> <a href="{{ url_for('highPay') }}">MAIORES PAGAMENTOS</a> </p>
+
+        <p> <a href="{{ url_for('highPayState') }}">MAIORES PAGAMENTOS POR ESTADO</a> </p>
+
+        <p> <a href="{{ url_for('allPagHigher') }}">PAGAMENTOS >= 600</a> </p>
 
         Procurar favorecido:
          <form action="{{ url_for('searchFav') }}" method="post" class="add-entry">

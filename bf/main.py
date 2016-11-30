@@ -30,30 +30,35 @@ def getDB():
         g.sqlite_db = connectDB()
     return g.sqlite_db
 
-# def _searchFav(nis):
-#     conn = sqlite3.connect(app.config['DATABASE'])
-#     cur2 = conn.cursor()
-#     cur2.execute("""
-#             SELECT
-#                 NOME_FAVORECIDO
-#             FROM
-#                 FAVORECIDO
-#             WHERE
-#                 NIS_FAVORECIDO = ?;
-#         """, (nis,))
-#     entries2 = cur2.fetchone()[0]
-#     print(entries2)
-#     return nis
+def _searchFav(valor):
+    if valor >= 600:
+        return valor
+    return None
 
 @app.route('/')
 def index():
     db = getDB()
-    # db.create_function("search", 1, _searchFav)
     return render_template('home.html')
 
 @app.route('/all')
 def all():
     return render_template('all.html')
+
+@app.route('/allpag', methods=['GET', 'POST'])
+def allPagHigher():
+    db = getDB()
+    db.create_function("search", 1, _searchFav)
+    cur = db.execute("""
+        SELECT
+            search(VALOR_PARCELA) AS valor,
+            NIS_FAVORECIDO as nis
+        FROM
+            PAGAMENTO
+        WHERE
+            valor IS NOT NULL;
+    """)
+    entries = cur.fetchall()
+    return render_template('resultspag.html', entries=entries)
 
 @app.route('/searchfav', methods=['POST'])
 def searchFav():
@@ -142,7 +147,8 @@ def highPayState():
         LEFT JOIN FAVORECIDO f ON f.CODIGO_SIAFI_MUNICIPIO = m.CODIGO_SIAFI_MUNICIPIO
         JOIN PAGAMENTO p ON f.nis_favorecido = p.nis_favorecido
         GROUP BY
-            estado;
+            estado
+        ORDER BY total DESC;
     """)
     entries = cur.fetchall()
     return render_template('paystate.html', entries=entries)
@@ -183,7 +189,7 @@ def medValorEstado():
     cur = db.execute("""
         SELECT
             m.uf AS estado,
-            valor AS med_estado
+            AVG(valor) AS med_estado
         FROM
             MUNICIPIO m
          JOIN
