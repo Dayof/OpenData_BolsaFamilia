@@ -323,16 +323,36 @@
 	\section{Consultas} 
 	\label{sec:consultas}
 	
-	Foram elaborados scripts de consultas para interagir com o banco de dados obtido além do CRUD básico. As consultas elaboradas servem para verificar a respostas das seguintes questões:
+	Foram elaborados scripts de consultas para interagir com o banco de dados obtido além do CRUD básico. As consultas elaboradas servem para facilitar a obtenção e leitura de dados do banco de dados. Abordaremos as \emph{queries}, \emph{views} e \emph{triggers} utilizados. Como o SQLite 3 não tem suporte para \emph{procedures}, não foi possível implementá-los neste projeto.
+	
+	\subsection{Queries}
+	\label{sec:query}
+	
+	As \emph{queries} realizadas tem como objetivo responder às seguintes perguntas:
 	
 	\begin{itemize}
 		\item Quem foi a pessoa que mais recebeu recurso do governo em um determinado ano/mês?
 		\item Qual o estado que mais recebeu recurso?
-		\item Quem são todos os favorecidos do programa Bolsa Família de Setembro de 2015 organizados em ordem alfabética ascendente?
+		\item Quem são todos os favorecidos do programa Bolsa Família de Setembro de 2015 organizados em ordem alfabética?
 		\item Quantos favorecidos existem por estado?
 		\item Qual a média da parcelas?
 		\item Qual a média de pagamentos por estado?
 	\end{itemize}
+	
+	\subsection{Views}
+	\label{sec:view}
+	
+	A \emph{view} que utilizamos tem como objetivo mostrar os favorecidos que mais foram beneficiados nesse mês de setembro de 2015. Essa \emph{view} nos mostra o NIS e o nome do favorecido, o total recebido e o mês em que foi recebido, ordenados pelo total recebido por cada pessoa, do mais beneficiado ao menos beneficiado.
+	
+	\subsection{Procedures}
+	\label{sec:proc}
+	
+	Como dito anteriormente, a biblioteca que usamos, SQLite 3, não tem suporte para \emph{procedures}, portanto não foi possível fazer uso de tal função.
+	
+	\subsection{Triggers}
+	\label{sec:trig}
+	
+	O \emph{trigger} utilizado tem o fim de gerar um \emph{drop} para cada pagamento de um favorecido que foi removido da tabela. Ou seja, sempre que um favorecido for removido da tabela de favorecidos, todos os pagamentos referentes a esse favorecido também serão removidos. Caso não haja pagamento ao favorecido, nenhum pagamento será removido.
 	
 	\section{Análise dos Resultados e Considerações Finais}
 	\label{sec:resultados}
