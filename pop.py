@@ -1,6 +1,6 @@
 import csv, sqlite3
 
-conn = sqlite3.connect("all.db")
+conn = sqlite3.connect("parcial.db")
 cur = conn.cursor()
 
 print("DROPS NAS TABELAS NORMALIZADAS...")

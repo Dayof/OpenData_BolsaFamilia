@@ -89,8 +89,7 @@
 
     {% for entry in entries %}
         <li>
-            <h2>{{ entry.nome|safe }}</h2>
-            {{  entry.nis }}
+            <h2>{{ entry.nome|safe }} - {{  entry.nis }}</h2>
         </li>
     {% else %}
         <li><em>Unbelievable. No entries here so far</em></li>

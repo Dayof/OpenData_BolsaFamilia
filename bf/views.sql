@@ -1,9 +1,7 @@
 -- TRANSACTION para inserir view de consulta que ordena os favorecidos em ordem de maior pagamento na base de dados
 BEGIN TRANSACTION;
 
-DROP VIEW MAIS_FAVORECIDOS;
-
-CREATE VIEW MAIS_FAVORECIDOS
+CREATE VIEW IF NOT EXISTS MAIS_FAVORECIDOS
 AS
 SELECT
     f.nis_favorecido as nis,

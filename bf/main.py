@@ -16,51 +16,41 @@ app.config.from_envvar('BF_SETTINGS', silent=True)
 
 print(app.config)
 
+def connectDB():
+    """Connects to the specific database."""
+    rv = sqlite3.connect(app.config['DATABASE'])
+    rv.row_factory = sqlite3.Row
+    return rv
+
 def getDB():
     """Opens a new database connection if there is none yet for the
     current application context.
     """
     if not hasattr(g, 'sqlite_db'):
-        rv = connectDB()
-        rv.row_factory = sqlite3.Row
-        g.sqlite_db = rv.row_factory
-
+        g.sqlite_db = connectDB()
     return g.sqlite_db
 
-def getCON():
-    if not hasattr(g, 'sqlite_db'):
-        rv = connectDB()
-        rv.row_factory = sqlite3.Row
-        g.sqlite_db = rv.row_factory
-    return rv
-
-def connectDB():
-    """Connects to the specific database."""
-    rv = sqlite3.connect(app.config['DATABASE'])
-    return rv
-
-def _searchFav(nis):
-    db = getDB()
-    cur = db.execute("""
-            SELECT
-                NOME_FAVORECIDO AS nome
-            FROM
-                FAVORECIDO
-            WHERE
-                NIS_FAVORECIDO = ?;
-        """,(nis,))
-    entries = cur.fetchall()
-    return entries[0][0]
+# def _searchFav(nis):
+#     conn = sqlite3.connect(app.config['DATABASE'])
+#     cur2 = conn.cursor()
+#     cur2.execute("""
+#             SELECT
+#                 NOME_FAVORECIDO
+#             FROM
+#                 FAVORECIDO
+#             WHERE
+#                 NIS_FAVORECIDO = ?;
+#         """, (nis,))
+#     entries2 = cur2.fetchone()[0]
+#     print(entries2)
+#     return nis
 
 @app.route('/')
 def index():
     db = getDB()
-    con = getCON()
-
-    con.create_function("search", 1, _searchFav)
+    # db.create_function("search", 1, _searchFav)
     cur = db.execute("""
             SELECT
-                search(NIS_FAVORECIDO) as nome,
                 NIS_FAVORECIDO AS nis,
                 MES_COMPETENCIA as mes,
                 VALOR_PARCELA as valor
@@ -75,8 +65,8 @@ def allFav():
     db = getDB()
     cur = db.execute("""
         SELECT
-            NOME_FAVORECIDO AS nis,
-            CODIGO_SIAFI_MUNICIPIO AS nome
+            NOME_FAVORECIDO AS nome,
+            NIS_FAVORECIDO AS nis
         FROM
             FAVORECIDO
         ORDER BY nome ASC;
@@ -119,7 +109,7 @@ def allFavByState():
     cur = db.execute("""
         SELECT
             m.uf as estado,
-            COUNT(p.codigo_siafi_municipio) AS total_fav
+            COUNT(m.codigo_siafi_municipio) AS total_fav
         FROM
             MUNICIPIO m
         LEFT JOIN FAVORECIDO f ON m.codigo_siafi_municipio = f.codigo_siafi_municipio
@@ -149,15 +139,19 @@ def medValorEstado():
     cur = db.execute("""
         SELECT
             m.uf AS estado,
-            AVG(p.valor_parcela) AS med_state
+            valor AS med_estado
         FROM
             MUNICIPIO m
-        LEFT JOIN FAVORECIDO f ON m.codigo_siafi_municipio = f.codigo_siafi_municipio
-        LEFT JOIN PAGAMENTO p ON f.nis_favorecido = p.nis_favorecido
+         JOIN
+            ( SELECT f.codigo_siafi_municipio as siafi,
+                    p.valor_parcela as valor
+                FROM PAGAMENTO P
+                JOIN FAVORECIDO f ON p.nis_favorecido = f.nis_favorecido )
+        ON m.codigo_siafi_municipio = siafi
         GROUP BY
             estado
         ORDER BY
-            med_state;
+            med_estado;
     """)
     entries = cur.fetchall()
     return render_template('medvalorbystate.html', entries=entries)
@@ -166,7 +160,7 @@ def medValorEstado():
 def addPag():
     db = getDB()
     db.execute("""
-        INSERT INTO FAVORECIDO (NIS_FAVORECIDO, NOME_FAVORECIDO, CODIGO_SIAFI_MUNICIPIO)
+        INSERT OR IGNORE INTO FAVORECIDO (NIS_FAVORECIDO, NOME_FAVORECIDO, CODIGO_SIAFI_MUNICIPIO)
         VALUES (?, ?, ?);
         """, [request.form['nis_fav'], request.form['nome_fav'], request.form['siafi']])
 

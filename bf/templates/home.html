@@ -18,7 +18,7 @@
             {% block body %}
                 {% for entry in entries %}
                     <li>
-                        <h2>{{ entry.nis }} - {{ entry.nome|safe }}</h2>
+                        <h2>{{ entry.nis }} </h2>
                         {{  entry.mes }} - {{  entry.valor|safe }}
                     </li>
                 {% else %}

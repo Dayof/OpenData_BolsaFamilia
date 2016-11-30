@@ -1,6 +1,6 @@
 #!bin/bash
 DIR_BF=bf
-BF_DB="DIR_BF/all.db"
+BF_DB="DIR_BF/parcial.db"
 
 error()
 {
@@ -19,7 +19,7 @@ else
     python3 import_bf_csv.py || error
 	echo "Populando database das tabelas normalizadas..."
     python3 pop.py || error
-	mv all.db bf/ || error
+	mv parcial.db bf/ || error
 	cd "$DIR_BF" || error
-	sqlite3 all.db < views.sql || error
+	sqlite3 parcial.db < views.sql || error
 fi

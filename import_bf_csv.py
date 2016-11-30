@@ -1,15 +1,15 @@
 import csv, sqlite3
 
-to_db_bf, to_db_fav, to_db_pag = [], [], []
+to_db_bf, to_db_fav, to_db_pag = [], set(), []
 
 transf = lambda x: int(x.replace(',','')[:-3])
 
 def insertMultTab(u, cs, n, cf, csf, cp, ca, ns, nf, f, v, m):
     to_db_bf.append((u, cs, n, cf, csf, cp, ca, ns, nf, f, v, m))
-    to_db_fav.append((ns, nf, cs))
-    to_db_pag.append((cp, nf, m, v))
+    to_db_fav.add((ns, nf, cs))
+    to_db_pag.append((cp, ns, m, v))
 
-conn = sqlite3.connect("all.db")
+conn = sqlite3.connect("parcial.db")
 cur = conn.cursor()
 
 print("DROPS NAS TABELAS DE FAVORECIDO E PAGAMENTO...")
@@ -88,6 +88,9 @@ with open('func_2015.csv', encoding = "ISO-8859-1") as inf:
     if not to_db:
         print("OCORREU ERRO NO PROCESSAMENTO DA CSV DAS FUNCOES E SUBFUNCOES PARA TABELA FUNCAO_SUBFUNCAO...")
         exit()
+    else:
+        print("VALORES DA LISTA DAS FUNCOES : %s" % len(to_db))
+        print("PRIMEIRO VALOR: %s" % str(to_db[0]))
 
 cur.executemany("INSERT INTO FUNCAO_SUBFUNCAO ( \
                             CODIGO_FUNCAO, \
@@ -118,42 +121,29 @@ with open('bf.csv', encoding = "ISO-8859-1") as inf:
     if not to_db_bf:
         print("OCORREU ERRO NO PROCESSAMENTO DA CSV DA BF PARA TABELA BOLSA_FAMILIA...")
         exit()
+    else:
+        print("VALORES DA LISTA DO BF : %s" % len(to_db_bf))
+        print("PRIMEIRO VALOR: %s" % str(to_db_bf[0]))
 
     if not to_db_fav:
         print("OCORREU ERRO NO PROCESSAMENTO DA CSV DA BF PARA TABELA FAVORECIDO...")
         exit()
+    else:
+        print("TRANSFORMANDO CONJUNTO DE FAVORECIDOS PARA LISTA...")
+        type(to_db_fav)
+        to_db_fav = list(to_db_fav)
+        type(to_db_fav)
+        print("VALORES DA LISTA DE FAVORECIDOS : %s" % len(to_db_fav))
+        print("PRIMEIRO VALOR: %s" % str(to_db_fav[0]))
 
     if not to_db_pag:
         print("OCORREU ERRO NO PROCESSAMENTO DA CSV DA BF PARA TABELA PAGAMENTO...")
         exit()
+    else:
+        print("VALORES DA LISTA DE PAGAMENTOS : %s" % len(to_db_pag))
+        print("PRIMEIRO VALOR: %s" % str(to_db_pag[0]))
 
 print("EXTRAÇÃO NO CSV DA BOLSA FAMILIA...COMPLETO")
-
-print("OBJETOS PYTHON PARA DB NA TABELA DE PAGAMENTOS...")
-
-cur.executemany("INSERT INTO PAGAMENTO ( \
-                            CODIGO_PROGRAMA, \
-                            NIS_FAVORECIDO, \
-                            MES_COMPETENCIA, \
-                            VALOR_PARCELA \
-                            ) \
-                            VALUES (?, ?, ?, ?);", to_db_pag)
-
-conn.commit()
-
-print("OBJETOS PYTHON PARA DB NA TABELA DE PAGAMENTOS...COMPLETO")
-
-print("OBJETOS PYTHON PARA DB NA TABELA DOS FAVORECIDOS...")
-
-cur.executemany("INSERT OR IGNORE INTO FAVORECIDO ( \
-                                        NIS_FAVORECIDO, \
-                                        NOME_FAVORECIDO, \
-                                        CODIGO_SIAFI_MUNICIPIO \
-                                        ) \
-                                        VALUES (?, ?, ?);", to_db_fav)
-conn.commit()
-
-print("OBJETOS PYTHON PARA DB NA TABELA DOS FAVORECIDOS...COMPLETO")
 
 print("OBJETOS PYTHON PARA DB NA TABELA DO BOLSA FAMILIA...")
 
@@ -173,10 +163,36 @@ cur.executemany("INSERT INTO BOLSA_FAMILIA ( \
                             ) \
                             VALUES (?, ?, ?, ?, ?, \
                                     ?, ?, ?, ?, ?, \
-                                    ?, ?);", to_db_bf)
+                                    ?, ?);", to_db_bf[:1000])
 
 conn.commit()
 
 print("OBJETOS PYTHON PARA DB NA TABELA DO BOLSA FAMILIA...COMPLETO")
+
+print("OBJETOS PYTHON PARA DB NA TABELA DE PAGAMENTOS...")
+
+cur.executemany("INSERT INTO PAGAMENTO ( \
+                            CODIGO_PROGRAMA, \
+                            NIS_FAVORECIDO, \
+                            MES_COMPETENCIA, \
+                            VALOR_PARCELA \
+                            ) \
+                            VALUES (?, ?, ?, ?);", to_db_pag[:1000])
+
+conn.commit()
+
+print("OBJETOS PYTHON PARA DB NA TABELA DE PAGAMENTOS...COMPLETO")
+
+print("OBJETOS PYTHON PARA DB NA TABELA DOS FAVORECIDOS...")
+
+cur.executemany("INSERT INTO FAVORECIDO ( \
+                            NIS_FAVORECIDO, \
+                            NOME_FAVORECIDO, \
+                            CODIGO_SIAFI_MUNICIPIO \
+                            ) \
+                            VALUES (?, ?, ?);", to_db_fav[:1000])
+conn.commit()
+
+print("OBJETOS PYTHON PARA DB NA TABELA DOS FAVORECIDOS...COMPLETO")
 
 conn.close()
