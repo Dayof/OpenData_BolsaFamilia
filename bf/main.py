@@ -16,10 +16,57 @@ app.config.from_envvar('BF_SETTINGS', silent=True)
 
 print(app.config)
 
+def getDB():
+    """Opens a new database connection if there is none yet for the
+    current application context.
+    """
+    if not hasattr(g, 'sqlite_db'):
+        rv = connectDB()
+        rv.row_factory = sqlite3.Row
+        g.sqlite_db = rv.row_factory
+
+    return g.sqlite_db
+
+def getCON():
+    if not hasattr(g, 'sqlite_db'):
+        rv = connectDB()
+        rv.row_factory = sqlite3.Row
+        g.sqlite_db = rv.row_factory
+    return rv
+
+def connectDB():
+    """Connects to the specific database."""
+    rv = sqlite3.connect(app.config['DATABASE'])
+    return rv
+
+def _searchFav(nis):
+    db = getDB()
+    cur = db.execute("""
+            SELECT
+                NOME_FAVORECIDO AS nome
+            FROM
+                FAVORECIDO
+            WHERE
+                NIS_FAVORECIDO = ?;
+        """,(nis,))
+    entries = cur.fetchall()
+    return entries[0][0]
+
 @app.route('/')
 def index():
     db = getDB()
-    cur = db.execute('select * from PAGAMENTO;')
+    con = getCON()
+
+    con.create_function("search", 1, _searchFav)
+    cur = db.execute("""
+            SELECT
+                search(NIS_FAVORECIDO) as nome,
+                NIS_FAVORECIDO AS nis,
+                MES_COMPETENCIA as mes,
+                VALOR_PARCELA as valor
+            FROM
+                PAGAMENTO;
+        """)
     entries = cur.fetchall()
     return render_template('home.html', entries=entries)
 
@@ -27,9 +74,11 @@ def index():
 def allFav():
     db = getDB()
     cur = db.execute("""
-        SELECT NOME_FAVORECIDO AS NIS,
-        MUNICIPIO_CODIGO_SIAFI_MUNICIPIO AS Nome
-        FROM FAVORECIDO
+        SELECT
+            NOME_FAVORECIDO AS nis,
+            CODIGO_SIAFI_MUNICIPIO AS nome
+        FROM
+            FAVORECIDO
         ORDER BY nome ASC;
     """)
     entries = cur.fetchall()
@@ -39,28 +88,27 @@ def allFav():
 def highPay():
     db = getDB()
     cur = db.execute("""
-        SELECT *
-        FROM MAIS_FAVORECIDOS;
+        SELECT
+            *
+        FROM
+            MAIS_FAVORECIDOS;
     """)
     entries = cur.fetchall()
-    print(entries)
     return render_template('pay.html', entries=entries)
 
 @app.route('/paystate')
 def highPayState():
     db = getDB()
     cur = db.execute("""
-        CREATE PROCEDURE uf_mais_favorecidos AS
-        BEGIN
-        SELECT uf AS Estado,
-        SUM(valor_parcela) AS Total
-        FROM municipio
-        LEFT JOIN favorecido
-        ON CODIGO_SIAFI_MUNICIPIO = MUNICIPIO_CODIGO_SIAFI_MUNICIPIO
-        JOIN pagamento
-        ON nis_favorecido = favorecido_nis_favorecido
-        GROUP BY Estado
-        END;
+        SELECT
+            m.uf AS estado,
+            SUM(p.valor_parcela) AS total
+        FROM
+            MUNICIPIO m
+        LEFT JOIN FAVORECIDO f ON f.CODIGO_SIAFI_MUNICIPIO = m.CODIGO_SIAFI_MUNICIPIO
+        JOIN PAGAMENTO p ON f.nis_favorecido = p.nis_favorecido
+        GROUP BY
+            estado;
     """)
     entries = cur.fetchall()
     return render_template('paystate.html', entries=entries)
@@ -69,13 +117,16 @@ def highPayState():
 def allFavByState():
     db = getDB()
     cur = db.execute("""
-        SELECT uf, COUNT(municipio_codigo_siafi_municipio)
-        AS tot_fav
-        FROM municipio
-        LEFT JOIN favorecido
-        ON codigo_siafi_municipio = municipio_codigo_siafi_municipio
-        GROUP BY uf
-        ORDER BY tot_fav;
+        SELECT
+            m.uf as estado,
+            COUNT(p.codigo_siafi_municipio) AS total_fav
+        FROM
+            MUNICIPIO m
+        LEFT JOIN FAVORECIDO f ON m.codigo_siafi_municipio = f.codigo_siafi_municipio
+        GROUP BY
+            estado
+        ORDER BY
+            total_fav;
     """)
     entries = cur.fetchall()
     return render_template('allfavbystate.html', entries=entries)
@@ -84,8 +135,10 @@ def allFavByState():
 def medValor():
     db = getDB()
     cur = db.execute("""
-        SELECT AVG(valor_parcela) AS med_pag
-        FROM pagamento;
+        SELECT
+            AVG(valor_parcela) AS med_pag
+        FROM
+            PAGAMENTO;
     """)
     entries = cur.fetchall()
     return render_template('medvalor.html', entries=entries)
@@ -94,14 +147,17 @@ def medValor():
 def medValorEstado():
     db = getDB()
     cur = db.execute("""
-        SELECT uf, AVG(valor_parcela) AS med_pag_by_state
-        FROM municipio
-        LEFT JOIN favorecido
-        ON codigo_siafi_municipio = municipio_codigo_siafi_municipio
-        LEFT JOIN pagamento
-        ON nis_favorecido = favorecido_nis_favorecido
-        GROUP BY uf
-        ORDER BY med_pag_by_state;
+        SELECT
+            m.uf AS estado,
+            AVG(p.valor_parcela) AS med_state
+        FROM
+            MUNICIPIO m
+        LEFT JOIN FAVORECIDO f ON m.codigo_siafi_municipio = f.codigo_siafi_municipio
+        LEFT JOIN PAGAMENTO p ON f.nis_favorecido = p.nis_favorecido
+        GROUP BY
+            estado
+        ORDER BY
+            med_state;
     """)
     entries = cur.fetchall()
     return render_template('medvalorbystate.html', entries=entries)
@@ -109,13 +165,19 @@ def medValorEstado():
 @app.route('/addpag', methods=['POST'])
 def addPag():
     db = getDB()
-
-    db.execute('insert into FAVORECIDO (NIS_FAVORECIDO, NOME_FAVORECIDO, MUNICIPIO_CODIGO_SIAFI_MUNICIPIO) values (?, ?, ?)', [request.form['nis_fav'], request.form['nome_fav'], request.form['siafi']])
+    db.execute("""
+        INSERT INTO FAVORECIDO (NIS_FAVORECIDO, NOME_FAVORECIDO, CODIGO_SIAFI_MUNICIPIO)
+        VALUES (?, ?, ?);
+        """, [request.form['nis_fav'], request.form['nome_fav'], request.form['siafi']])
 
     db.commit()
 
-    db.execute('insert into PAGAMENTO (PROGRAMA_CODIGO_PROGRAMA, FAVORECIDO_NIS_FAVORECIDO, MES_COMPETENCIA, VALOR_PARCELA) values (?, ?, ?, ?)', [request.form['cod_programa'], request.form['nis_fav'],
+    db.execute("""
+        INSERT INTO PAGAMENTO (CODIGO_PROGRAMA, NIS_FAVORECIDO, MES_COMPETENCIA, VALOR_PARCELA)
+        VALUES (?, ?, ?, ?);
+        """, [request.form['cod_programa'], request.form['nis_fav'],
        request.form['mes'], request.form['valor']])
+
     db.commit()
 
     flash('Nova entrada de favorecido e pagamento foi adicionada!')
@@ -126,7 +188,10 @@ def addPag():
 def addFav():
     db = getDB()
 
-    db.execute('insert into FAVORECIDO (NIS_FAVORECIDO, NOME_FAVORECIDO, MUNICIPIO_CODIGO_SIAFI_MUNICIPIO) values (?, ?, ?)', [request.form['siafi'], request.form['nis_fav'], request.form['nome_fav']])
+    db.execute("""
+        INSERT INTO FAVORECIDO (NIS_FAVORECIDO, NOME_FAVORECIDO, CODIGO_SIAFI_MUNICIPIO)
+        VALUES (?, ?, ?);
+        """, [request.form['nis_fav'], request.form['nome_fav'], request.form['siafi']])
 
     db.commit()
 
@@ -134,22 +199,27 @@ def addFav():
 
     return redirect(url_for('allFav'))
 
+# TODO - exibir as rows encontradas com os valores inseridos e selecionar qual dado de pagamento editar
 @app.route('/edit', methods=['POST'])
 def editPag():
     db = getDB()
 
     db.execute("""
-        update PAGAMENTO
-        set VALOR_PARCELA = ?
-        where PROGRAMA_CODIGO_PROGRAMA = ?
-        and FAVORECIDO_NIS_FAVORECIDO = ?
-        and MES_COMPETENCIA = ?;
+        UPDATE
+            PAGAMENTO
+        SET
+            VALOR_PARCELA = ?
+        WHERE
+            CODIGO_PROGRAMA = ?
+        AND
+            NIS_FAVORECIDO = ?
+        AND
+            MES_COMPETENCIA = ?;
     """, (request.form['new_valor'], request.form['cod_programa'], request.form['nis_fav'], request.form['mes']))
 
     db.commit()
 
     flash('Valor da parcela de um pagamento foi editada com SUCESSO!!')
-    print('Valor da parcela do favorecido %s para o valor de %s de um pagamento foi editado com SUCESSO!!' % (request.form['nis_fav'], request.form['valor']))
 
     return redirect(url_for('allFav'))
 
@@ -158,9 +228,12 @@ def editFav():
     db = getDB()
 
     db.execute("""
-        update FAVORECIDO
-        set MUNICIPIO_CODIGO_SIAFI_MUNICIPIO = ?
-        where NOME_FAVORECIDO = ?
+        UPDATE
+            FAVORECIDO
+        SET
+            NOME_FAVORECIDO = ?
+        WHERE
+            NIS_FAVORECIDO = ?
     """, (request.form['nome_fav'], request.form['nis_fav']))
 
     db.commit()
@@ -174,10 +247,14 @@ def delPag():
     db = getDB()
 
     db.execute("""
-        delete from PAGAMENTO
-        where PROGRAMA_CODIGO_PROGRAMA = ?
-        and FAVORECIDO_NIS_FAVORECIDO = ?
-        and MES_COMPETENCIA = ?
+        DELETE FROM
+            PAGAMENTO
+        WHERE
+            CODIGO_PROGRAMA = ?
+        AND
+            NIS_FAVORECIDO = ?
+        AND
+            MES_COMPETENCIA = ?
     """, (request.form['cod_programa'], request.form['nis_fav'], request.form['mes']))
 
     db.commit()
@@ -191,8 +268,10 @@ def delFav():
     db = getDB()
 
     db.execute("""
-        delete from FAVORECIDO
-        where NOME_FAVORECIDO = ?
+        DELETE FROM
+            FAVORECIDO
+        WHERE
+            NIS_FAVORECIDO = ?
     """, (request.form['nis_fav'], ))
 
     db.commit()
@@ -200,20 +279,6 @@ def delFav():
     flash('Favorecido foi deletado com SUCESSO!!')
 
     return redirect(url_for('allFav'))
-
-def connectDB():
-    """Connects to the specific database."""
-    rv = sqlite3.connect(app.config['DATABASE'])
-    rv.row_factory = sqlite3.Row
-    return rv
-
-def getDB():
-    """Opens a new database connection if there is none yet for the
-    current application context.
-    """
-    if not hasattr(g, 'sqlite_db'):
-        g.sqlite_db = connectDB()
-    return g.sqlite_db
 
 @app.teardown_appcontext
 def closeDB(error):
