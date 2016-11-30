@@ -301,6 +301,8 @@
 		\item Execução das "QUERIES" utilizando Python 3 e o SQLite 3 (processo bastante demorado).
 	\end{itemize}
 	
+	Entretanto, pela demora de carregamento e processamento dos dados, foi decidido que \textbf{apenas 1000 linhas} das 13 milhões do banco seriam utilizadas, devido a tabela de pagamentos. Desse modo, as perguntas gerais, situadas na seção \ref{sec:resultados} não poderão ser respondidas nesse sistema simplificado.
+	
 	Por fim, ao final do processo de ETL os dados estão disponíveis para realizar o CRUD (Create, Read, Update e Delete).
 	
 	\section{Camadas do Sistema para o CRUD}
@@ -357,7 +359,7 @@
 	\section{Análise dos Resultados e Considerações Finais}
 	\label{sec:resultados}
 	
-	Foi implementado um sistema capaz de ler e escrever dados abertos de Setembro de 2015 sobre o programa Bolsa Família, além de possibilitar responder algumas questões levantadas sobre esta base de dados como:
+	Foi implementado um sistema capaz de ler e escrever dados abertos de Setembro de 2015 sobre o programa Bolsa Família, com o objetivo responder algumas questões levantadas sobre esta base de dados como:
 	
 	\begin{itemize}
 		\item Quem foi a pessoa que mais recebeu  recurso do governo em um determinado ano/mês? \\
@@ -369,6 +371,8 @@
 	Também foi descoberto que existe mais de um pagamento direcionado a um mesmo favorecido, do mesmo programa no mesmo mês/ano. Além disso, nesse período de setembro de 2015, foram registradas 13 912 767 entradas de pagamento, deixando o processamento realmente lento. E, para dificultar o processo, para cada FK o SGBD conferia se existia tal chave nas outras tabelas, o que deixou o processo de criação dessa tabela exponencialmente lento.
 	
 	Portanto, foi decidido que a tabela de pagamentos teria um campo extra chamado \emph{cod{\_}pag}, sendo ele de \emph{auto{\_}increment}. Essa alteração, entretanto, acarretou em mudanças no BD, já que a entidade \emph{Pagamento} deixa de ser entidade fraca, e as relações entre \emph{Favorecido} e \emph{Programa} deixam de ser de identificação.
+	
+	Por fim, por causa da lentidão no processamento de dados, não foi possível analisar o banco de dados inteiro. Desse modo, foi utilizado \textbf{apenas as primeiras 1000 tuplas} do banco, limitando as tabelas a um máximo de 1000 linhas. Somente assim foi possível de extrair alguns dados do banco e testar as consultas. Por causa dessa redução de dados, não foi possível responder às perguntas gerais citadas acima.
 	
 	Todo o sistema e scripts de ETL estão no repositório aberto do GitHub criado para o desenvolvimento deste projeto: \url{https://github.com/Dayof/OpenData_BolsaFamilia}. As bases de dados de formato CSV e DB não estão neste repositório remoto devido à extensão destes.
 	

@@ -27,5 +27,5 @@
 \contentsline {subsection}{\numberline {7.1}Queries}{13}{subsection.7.1}
 \contentsline {subsection}{\numberline {7.2}Views}{13}{subsection.7.2}
 \contentsline {subsection}{\numberline {7.3}Procedures}{13}{subsection.7.3}
-\contentsline {subsection}{\numberline {7.4}Triggers}{13}{subsection.7.4}
+\contentsline {subsection}{\numberline {7.4}Triggers}{14}{subsection.7.4}
 \contentsline {section}{\numberline {8}An\IeC {\'a}lise dos Resultados e Considera\IeC {\c c}\IeC {\~o}es Finais}{14}{section.8}

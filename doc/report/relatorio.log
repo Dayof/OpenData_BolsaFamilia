@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.10)  30 NOV 2016 12:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.10)  30 NOV 2016 13:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1182,34 +1182,35 @@ o pelo soft-ware
  []
 
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 306.
+(babel)             in language  on input line 308.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 312.
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 312.
 [12]
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 313.
+(babel)             in language  on input line 315.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 318.
+(babel)             in language  on input line 320.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 323.
+(babel)             in language  on input line 325.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 328.
+(babel)             in language  on input line 330.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 342.
+(babel)             in language  on input line 344.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 347.
+(babel)             in language  on input line 349.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 352.
+(babel)             in language  on input line 354.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 357.
+(babel)             in language  on input line 358.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 361.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 361.
+(babel)             in language  on input line 358.
  [13]
-Underfull \hbox (badness 1097) in paragraph at lines 373--374
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 359.
+
+Underfull \hbox (badness 1097) in paragraph at lines 377--378
 \OT1/ptm/m/n/12 o de-sen-vol-vi-mento deste pro-jeto: []$\OT1/pcr/m/n/12 https 
 : / / github . com / Dayof / OpenData _
  []
@@ -1231,24 +1232,28 @@ Underfull \hbox (badness 3098) in paragraph at lines 23--27
 []\OT1/ptm/m/n/12 MySQLWorkbench (2016).  Mysql work-bench, soft-ware
  []
 
-)
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 380.
+(babel)             in language  on input line 27.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 380.
- [14]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 380.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 380.
+(babel)             in language  on input line 27.
+[14])
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 384.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 384.
+ [15]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 384.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 384.
  (./relatorio.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 380.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 380.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 384.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 384.
 Package rerunfilecheck Info: File `relatorio.out' has not changed.
 (rerunfilecheck)             Checksum: DFBCF596066E77514784164007F779BF;1792.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 380.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 384.
  ) 
 Here is how much of TeX's memory you used:
- 18726 strings out of 493089
- 341331 string characters out of 6134841
+ 18727 strings out of 493089
+ 341338 string characters out of 6134841
  423583 words of memory out of 5000000
  21785 multiletter control sequences out of 15000+600000
  23133 words of font info for 48 fonts, out of 8000000 for 9000
@@ -1263,10 +1268,10 @@ ist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/
 type1/urw/times/utmbi8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw
 /times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utm
 ri8a.pfb>
-Output written on relatorio.pdf (14 pages, 379501 bytes).
+Output written on relatorio.pdf (15 pages, 380760 bytes).
 PDF statistics:
- 312 PDF objects out of 1000 (max. 8388607)
- 280 compressed objects within 3 object streams
- 58 named destinations out of 1000 (max. 500000)
+ 317 PDF objects out of 1000 (max. 8388607)
+ 284 compressed objects within 3 object streams
+ 59 named destinations out of 1000 (max. 500000)
  257 words of extra memory for PDF output out of 10000 (max. 10000000)
 
