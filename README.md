@@ -14,13 +14,14 @@ Projeto que coleta dados abertos sobre o bolsa família e realiza CRUD e algumas
 - MySQL Workbench
 
 ### Features:
-- Importar dados csv para db,
+- ETL dos dados CSV para DB,
 - DER,
-- MR.
-
-### TODO:
-- Camadas de Apresentação,
-- Camada de Negócio,
+- MR,
+- Queries,
+- View,
+- "Procedure",
+- Trigger,
+- Camada de Apresentação,
 - Camada de Persistência.
 
 ### Dados utilizados
@@ -89,6 +90,13 @@ Para inserir os dados abertos nas tabelas normalizadas em 3F é só executar o s
 
 ``` bash
 $ sqlite3 bf.db < normalize.sql
+```
+
+Para inserir as [views.sql](views.sql) e os [triggers.sql](triggers.sql) no banco de dados, executar os seguintes comandos:
+
+``` bash
+$ sqlite3 bf.db < views.sql
+$ sqlite3 bf.db < triggers.sql
 ```
 
 ### Web Service
