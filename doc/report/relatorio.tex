@@ -40,12 +40,12 @@
 	
 	\selectlanguage{american}
 	\begin{abstract}
-		This report corresponds to the step-by-step project of creating a database using open data from the federal government (transparency portal). We will answer some issues about \textit{Bolsa Familia} theme.
+		This report corresponds to the step-by-step project of creating a database using open data from the federal government (transparency portal). We will answer some questions about the \textit{Bolsa Familia} project and develop a CRUD system using this database.
 	\end{abstract}
 	\selectlanguage{brazil}     
 	
 	\begin{resumo} 
-		Este relatório corresponde ao passo a passo do projeto de criação de um banco de dados utilizando dados públicos do governo federal (portal da transparência). Iremos sanar algumas questões sobre o tema \textit{Bolsa Família}.
+		Este relatório corresponde ao passo a passo do projeto de criação de um banco de dados utilizando dados públicos do governo federal (portal da transparência). Iremos sanar algumas questões sobre o projeto \textit{Bolsa Família} e implementar um sistema de CRUD utilizando este banco criado.
 	\end{resumo}
 	
 	\tableofcontents
@@ -109,7 +109,7 @@
 	\subsection{O Projeto}
 	\label{sec:proj}
 	
-	Este projeto foi desenvolvido com o fim de poder analisar os dados abertos do Programa Bolsa Família – PBF. Todos os algoritmos, scripts e imagens comentadas neste relatório podem ser encontrados no repositório aberto do GitHub criado para o desenvolvimento deste projeto: \url{https://github.com/Dayof/OpenData_BolsaFamilia}. 
+	Este projeto foi desenvolvido com o fim de poder analisar os dados abertos do Programa Bolsa Família – PBF e também realizar CRUD (Create, Read, Update e Delete) no sistema. Todos os algoritmos, scripts e imagens comentadas neste relatório podem ser encontrados no repositório aberto do GitHub criado para o desenvolvimento deste projeto: \url{https://github.com/Dayof/OpenData_BolsaFamilia}. 
 	
 	\section{Diagrama de Entidade Relacionamento (DER)}
 	\label{sec:der}
@@ -325,7 +325,7 @@
 	\section{Consultas} 
 	\label{sec:consultas}
 	
-	Foram elaborados scripts de consultas para interagir com o banco de dados obtido além do CRUD básico. As consultas elaboradas servem para facilitar a obtenção e leitura de dados do banco de dados. Abordaremos as \emph{queries}, \emph{views} e \emph{triggers} utilizados. Como o SQLite 3 não tem suporte para \emph{procedures}, não foi possível implementá-los neste projeto.
+	Foram elaborados scripts de consultas para interagir com o banco de dados obtido além do CRUD básico. As consultas elaboradas servem para facilitar a obtenção e leitura de dados do banco de dados. Abordaremos as \emph{queries}, \emph{procedures}, \emph{views} e \emph{triggers} utilizados. Como o SQLite 3 não tem suporte para as \emph{procedures} padrões de outros SGBDs, não foi possível implementá-los como esperado neste projeto, porém, foi realizada outra solução de "\emph{procedure}" condicional que funciona quase como uma \emph{procedure} padrão.
 	
 	\subsection{Queries}
 	\label{sec:query}
@@ -349,7 +349,11 @@
 	\subsection{Procedures}
 	\label{sec:proc}
 	
-	Como dito anteriormente, a biblioteca que usamos, SQLite 3, não tem suporte para \emph{procedures}, portanto não foi possível fazer uso de tal função.
+	Como dito anteriormente, a biblioteca que usamos, SQLite 3, não tem suporte para \emph{procedures} padrões de outros SGBDs, logo, foi realizada outra solução de "\emph{procedure}" condicional que funciona quase como uma \emph{procedure} padrão. A solução utilizada abrange a utilização do SQLite 3 junto da linguagem de programação usado para interagir com a persistência, que no caso seria o Python 3. 
+	
+	Foi implementado uma função em Python e esta foi mapeada para interagir com as \emph{queries} do SQLite. O método utilizado nesta solução pertence à biblioteca do SQLite 3 e tem como assinatura a seguinte descriação:  $create\_function("name\_function\_sql", params, name\_function\_python)$. 
+	
+	A função utilizada no projeto tem como objetivo buscar todos os favorecidos que tenham recebido ordem de pagamento de valores maiores ou iguais a $R\$ 600,00$.
 	
 	\subsection{Triggers}
 	\label{sec:trig}
@@ -366,9 +370,9 @@
 		\item Qual o estado que mais recebeu recurso?
 	\end{itemize}
 	
-	Também foi descoberto que existe mais de um pagamento direcionado a um mesmo favorecido, do mesmo programa no mesmo mês/ano. Além disso, nesse período de setembro de 2015, foram registradas 13 912 767 entradas de pagamento, deixando o processamento realmente lento. E, para dificultar o processo, para cada FK o SGBD conferia se existia tal chave nas outras tabelas, o que deixou o processo de criação dessa tabela exponencialmente lento.
+	Foi descoberto no processo de ETL do banco de dados que existe mais de um pagamento direcionado a um mesmo favorecido, do mesmo programa no mesmo mês/ano, logo, por este motivo, a chave composta não foi suficiente para identificar unicamente a ordem de pagamento, por isso, foi então decidido que a tabela teria um campo extra para ser utilizado como chave unitária, denominado por \emph{cod{\_}pag}, sendo ele de \emph{auto{\_}increment}. Essa alteração, entretanto, acarretou em mudanças no BD, já que a entidade \emph{Pagamento} deixa de ser entidade fraca, e as relações entre \emph{Favorecido} e \emph{Programa} deixam de ser de identificação.
 	
-	Portanto, foi decidido que a tabela de pagamentos teria um campo extra chamado \emph{cod{\_}pag}, sendo ele de \emph{auto{\_}increment}. Essa alteração, entretanto, acarretou em mudanças no BD, já que a entidade \emph{Pagamento} deixa de ser entidade fraca, e as relações entre \emph{Favorecido} e \emph{Programa} deixam de ser de identificação.
+	Além disso, nesse período de setembro de 2015, foram registradas 13 912 767 entradas de pagamento, deixando o processamento realmente lento. E, para dificultar o processo, para cada FK o SGBD conferia se existia tal chave nas outras tabelas, o que deixou o processo de população das tabelas exponencialmente lento. Foram gastos 4 dias de ETL sem sucesso para importar completamente os dados para o banco do sistema.
 	
 	Por fim, por causa da lentidão no processamento de dados, não foi possível analisar o banco de dados inteiro. Desse modo, foi utilizado \textbf{apenas as primeiras 1000 tuplas} do banco, limitando as tabelas a um máximo de 1000 linhas. Somente assim foi possível de extrair alguns dados do banco e testar as consultas. Por causa dessa redução de dados, não foi possível responder às perguntas gerais citadas acima.
 	

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.10)  30 NOV 2016 13:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.10.10)  1 DEC 2016 10:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -971,9 +971,9 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <13> not available
 
 (./relatorio.toc
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 22.
+(babel)             in language  on input line 20.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 22.
+(babel)             in language  on input line 20.
  [1
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}])
@@ -1031,15 +1031,9 @@ Package babel Info: Redefining portuges shorthand "|
  [4 <./vre_07-12.png>]
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 109.
-
-Underfull \hbox (badness 1097) in paragraph at lines 112--113
-\OT1/ptm/m/n/12 o de-sen-vol-vi-mento deste pro-jeto: []$\OT1/pcr/m/n/12 https 
-: / / github . com / Dayof / OpenData _
- []
-
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 114.
-<der.png, id=182, 597.432pt x 444.9423pt>
+ <der.png, id=182, 597.432pt x 444.9423pt>
 File: der.png Graphic file (type png)
  <use der.png>
 Package pdftex.def Info: der.png used on input line 121.
@@ -1083,7 +1077,7 @@ Package babel Info: Redefining portuges shorthand "|
  [8]
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 173.
- <eer.png, id=211, 1080.035pt x 543.02875pt>
+ <eer.png, id=210, 1080.035pt x 543.02875pt>
 File: eer.png Graphic file (type png)
 
 <use eer.png>
@@ -1201,21 +1195,42 @@ Package babel Info: Redefining portuges shorthand "|
 Package babel Info: Redefining portuges shorthand "|
 (babel)             in language  on input line 349.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 354.
+(babel)             in language  on input line 353.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 358.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 358.
+(babel)             in language  on input line 353.
  [13]
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 359.
+Underfull \hbox (badness 2409) in paragraph at lines 354--355
+[]\OT1/ptm/m/n/12 Foi im-ple-men-tado uma fun[][]ao em Python e esta foi ma-pe-
+ada para in-
+ []
 
-Underfull \hbox (badness 1097) in paragraph at lines 377--378
+
+Underfull \hbox (badness 3849) in paragraph at lines 354--355
+\OT1/ptm/m/n/12 te-ra-gir com as \OT1/ptm/m/it/12 que-ries \OT1/ptm/m/n/12 do S
+Q-Lite. O m[]etodo uti-li-zado nesta solu[][]ao per-
+ []
+
+
+Underfull \hbox (badness 2478) in paragraph at lines 354--355
+\OT1/ptm/m/n/12 tence []a bi-bli-o-teca do SQ-Lite 3 e tem como as-si-na-tura a
+ se-guinte descria[][]ao:
+ []
+
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 358.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 363.
+
+Underfull \hbox (badness 1097) in paragraph at lines 379--380
 \OT1/ptm/m/n/12 o de-sen-vol-vi-mento deste pro-jeto: []$\OT1/pcr/m/n/12 https 
 : / / github . com / Dayof / OpenData _
  []
 
-(./relatorio.bbl
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 380.
+Package babel Info: Redefining portuges shorthand "|
+(babel)             in language  on input line 380.
+[14] (./relatorio.bbl
 Underfull \hbox (badness 4673) in paragraph at lines 4--9
 []\OT1/ptm/m/n/12 CaixaGov.  Caixa - pro-gra-mas so-ci-ais - bolsa fam[]^^Plia.
   []$\OT1/pcr/m/n/12 http :
@@ -1232,46 +1247,44 @@ Underfull \hbox (badness 3098) in paragraph at lines 23--27
 []\OT1/ptm/m/n/12 MySQLWorkbench (2016).  Mysql work-bench, soft-ware
  []
 
+)
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 27.
+(babel)             in language  on input line 386.
 Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 27.
-[14])
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 384.
-Package babel Info: Redefining portuges shorthand "|
-(babel)             in language  on input line 384.
+(babel)             in language  on input line 386.
  [15]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 384.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 384.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 386.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 386.
  (./relatorio.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 384.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 384.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 386.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 386.
 Package rerunfilecheck Info: File `relatorio.out' has not changed.
 (rerunfilecheck)             Checksum: DFBCF596066E77514784164007F779BF;1792.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 384.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 386.
  ) 
 Here is how much of TeX's memory you used:
- 18727 strings out of 493089
- 341338 string characters out of 6134841
+ 18730 strings out of 493089
+ 341390 string characters out of 6134841
  423583 words of memory out of 5000000
- 21785 multiletter control sequences out of 15000+600000
+ 21788 multiletter control sequences out of 15000+600000
  23133 words of font info for 48 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,10n,56p,1161b,458s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
-exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texl
-ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texli
-ve/2015/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2015/
-texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2015/texmf-d
-ist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/
-type1/urw/times/utmbi8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw
-/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utm
-ri8a.pfb>
-Output written on relatorio.pdf (15 pages, 380760 bytes).
+exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/te
+xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texl
+ive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive
+/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/
+2015/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2015/tex
+mf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2015/texmf-dist
+/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/typ
+e1/urw/times/utmbi8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/ti
+mes/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8
+a.pfb>
+Output written on relatorio.pdf (15 pages, 402499 bytes).
 PDF statistics:
- 317 PDF objects out of 1000 (max. 8388607)
- 284 compressed objects within 3 object streams
+ 324 PDF objects out of 1000 (max. 8388607)
+ 289 compressed objects within 3 object streams
  59 named destinations out of 1000 (max. 500000)
  257 words of extra memory for PDF output out of 10000 (max. 10000000)
 
